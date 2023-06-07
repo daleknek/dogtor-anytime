@@ -1,0 +1,45 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    height: 100vh;
+    background-color: #F5FBFF; /* Lightest color for the body background */
+}
+
+body .container .row .col-md-4 {
+    background-color: #E5F3FD; /* Light color for the form background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow around the form */
+}
+
+body .container .row .col-md-4 h2 {
+    font-family: 'Roboto Slab', serif;
+    color: #9ABDDC; /* Darkest color for the header text */
+}
+
+body .container .row .col-md-4 .form-control {
+    border-color: #AECCE4; /* Border color for the input fields */
+}
+
+.btn-primary {
+    background-color: #BDD5E7; /* Primary button color */
+    border-color: #AECCE4; /* Border color for the button */
+}
+
+.btn-primary:hover {
+    background-color: #D1E5F4; /* Lighter color for button hover state */
+    border-color: #AECCE4;
+}
+
+.logo {
+    width: 80%; 
+    max-width: 500px; 
+    height: auto;
+}
+
+.forgot-password-link {
+    color: #9ABDDC;
+}
+
+.form-check-label {
+    color: #9ABDDC;
+}
