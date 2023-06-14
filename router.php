@@ -28,6 +28,7 @@ class Router {
             'controller' => 'AppointmentsController',
             'action' => 'index'
         ]
+        
 
         // add more routes
     ];
