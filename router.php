@@ -23,8 +23,7 @@ class Router {
         'appointments' => [
             'controller' => 'AppointmentsController',
             'action' => 'index'
-        ]
-
+        ],
         'appointments' => [
             'controller' => 'AppointmentsController',
             'action' => 'index'
