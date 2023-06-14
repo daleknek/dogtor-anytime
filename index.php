@@ -1,11 +1,3 @@
-<?php
-// Starting a new session or resuming the existing session
-//  session_start();
-?>
-
-<!-- Check if user is logged in before accessing profile
-    if ($controllerName === 'Profile' && !isset($_SESSION['user'])) die('Unauthorized'); -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +12,10 @@
 
 
 <?php
+// Starting a new session or resuming the existing session
+//  session_start();
+//<!-- Check if user is logged in before accessing profile
+//   if ($controllerName === 'Profile' && !isset($_SESSION['user'])) die('Unauthorized'); -->
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);

@@ -18,7 +18,8 @@ $opt = [
 $pdo = new PDO($dsn, $user, $pass, $opt);
 
 // fetches vets from the database
-$stmt = $pdo->query('SELECT id, name FROM vets');
+$stmt = $pdo->query('SELECT * FROM vets');
+die($stmt);
 $vets = $stmt->fetchAll();
 
 // outputs vets as JSON

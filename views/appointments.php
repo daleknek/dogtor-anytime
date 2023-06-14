@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
+
+
     <style>
 
         body {
@@ -21,20 +20,18 @@
         }
     </style>
 
-</head>
-<body>
+
 <nav class="navbar fixed-top navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Dogtor Anytime</a>
         </div>
     </nav>
     <div class="container py-5" id="alertsContainer">
-        <!-- Alerts will go here -->
+
     </div>
     <div class="container py-5">
         <h1 class="text-center">My Appointments</h1>
 
-        <!-- Card for Appointment -->
         <div class="card mb-3" data-appointment-id="1">
             <div class="card-body">
                 <h5 class="card-title">Vet: Dr. Smith</h5>
@@ -47,7 +44,6 @@
             </div>
         </div>
         
-        <!-- More appointments... -->
         <div class="card mb-3" data-appointment-id="2">
             <div class="card-body">
                 <h5 class="card-title">Vet: Dr. Gillan</h5>
@@ -74,7 +70,6 @@
         <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addAppointmentModal">Add Appointment</button>
     </div>
 
-    <!-- Add Appointment Modal -->
 <div class="modal fade" id="addAppointmentModal" tabindex="-1" aria-labelledby="addAppointmentModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -90,7 +85,6 @@
               <option selected>Choose...</option>
               <option value="1">Dr. Smith</option>
               <option value="2">Dr. Gillan</option>
-              <!-- More options... -->
 
             </select>
           </div>
@@ -110,7 +104,6 @@
 </div>
 
    
-    <!-- Edit Appointment Modal -->
 <div class="modal fade" id="editAppointmentModal" tabindex="-1" aria-labelledby="editAppointmentModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -136,14 +129,13 @@
   </div>
 </div>
    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" 
-    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
     <script>
 
     window.onload = function() {
         // Fetch vets and populate the dropdown
         fetch('getVets.php')
-        .then(response => response.json())
+        .then(response => {return response.json()})
         .then(data => {
             var select = document.getElementById('vetSelect');
             data.forEach(function(vet) {
@@ -263,5 +255,4 @@
 }
 
    </script>
-</body>
-</html>
+
