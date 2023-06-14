@@ -20,6 +20,10 @@ class Router {
             'controller' => 'ProfileController',
             'action' => 'index'
         ],
+        'appointments' => [
+            'controller' => 'AppointmentsController',
+            'action' => 'index'
+        ]
 
         'appointments' => [
             'controller' => 'AppointmentsController',

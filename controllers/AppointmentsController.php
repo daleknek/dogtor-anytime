@@ -9,5 +9,4 @@ class AppointmentsController {
         require $_SERVER['DOCUMENT_ROOT'] . '/dogtor-anytime/views/appointments.php';
     } 
 }
-
 ?>
