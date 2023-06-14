@@ -3,6 +3,7 @@
 class Router {
 
     protected $routes = [
+
         'home' => [
             'controller' => 'HomeController',
             'action' => 'index'
@@ -24,6 +25,11 @@ class Router {
             'action' => 'index'
         ]
 
+        'appointments' => [
+            'controller' => 'AppointmentsController',
+            'action' => 'index'
+        ]
+
         // add more routes
     ];
 
@@ -37,6 +43,7 @@ class Router {
 
             $controller = new $controllerName();
             $controller->$actionName();
+
         } else {
             // Handle not found
             echo "404 Not Found";
