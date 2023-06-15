@@ -20,14 +20,14 @@ $PatientID = $_POST['patientId'];
 $FirstName = $_POST['first_name'];
 $LastName = $_POST['last_name'];
 $Email = $_POST ['email'];
-$Password = $_POST['patient_password']
+$Password = $_POST['patient_password'];
 
 // Capture vet data from sign up form
 $VetID = $_POST['vetId'];
 $FirstName = $_POST['first_name'];
 $LastName = $_POST['last_name'];
 $Email = $_POST ['email'];
-$Password = $_POST['vet_password']
+$Password = $_POST['vet_password'];
  
 
 // Prepare SQL for patient sign up

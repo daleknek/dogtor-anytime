@@ -51,8 +51,19 @@ class Router {
         'results' => [
             'controller' => 'ResultsController',
             'action' => 'index'
+<<<<<<< HEAD
         ]
         
+=======
+        ],
+
+        'clinic' => [
+            'controller' => 'ClinicController',
+            'action' => 'index'
+        ],
+
+
+>>>>>>> origin/main
 
         // add more routes
       ];
