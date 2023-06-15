@@ -18,7 +18,7 @@
     }
 
     .main-section {
-      background: url('images/bg_homepage.webp') center center;
+      background: url("images/bg_homepage.webp") center center;
       min-height: calc(100vh - 56px); /* Subtracting the header height */
       display: flex;
       justify-content: center;

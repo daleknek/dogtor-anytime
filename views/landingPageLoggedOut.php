@@ -18,7 +18,7 @@
     }
 
     .main-section {
-      background: url('images/bg_homepage.webp') center center;
+      background: url("images/bg_homepage.webp") center center;
       min-height: calc(100vh - 56px); /* Subtracting the header height */
       display: flex;
       justify-content: center;
@@ -55,19 +55,10 @@
       <div class="container">
         <a class="navbar-brand" href="#">DogtorAnytime</a>
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="Profile Picture" width="32" height="32" class="rounded-circle">
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">My Profile</a></li>
-                <li><a class="dropdown-item" href="#">My Appointments</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item sign-out" href="#">Sign out</a></li>
-              </ul>
-            </li>
-          </ul>
+            <div class="col-md-3 text-end" >
+                <button type="button" class="btn btn-outline-primary me-2">Login</button>
+                <button type="button" class="btn btn-primary">Sign-up</button>
+            </div>
         </div>
       </div>
     </nav>

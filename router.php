@@ -22,10 +22,35 @@ class Router {
         'appointments' => [
             'controller' => 'AppointmentsController',
             'action' => 'index'
+        ],
+        'landingPageLoggedOut' => [
+            'controller' => 'LandingPageLoggedOutController',
+            'action' => 'index'
+        ],
+        'landingPageLoggedIn' => [
+            'controller' => 'LandingPageLoggedInController',
+            'action' => 'index'
+        ],
+        'aboutUs' => [
+            'controller' => 'AboutUsController',
+            'action' => 'index'
+        ],
+        'contactUs' => [
+            'controller' => 'ContactUsController',
+            'action' => 'index'
+        ],
+        'editProfile' => [
+            'controller' => 'EditProfileController',
+            'action' => 'index'
+        ],
+        'results' => [
+            'controller' => 'ResultsController',
+            'action' => 'index'
         ]
 
         // add more routes
     ];
+
 
     public function dispatch($url) {
         // Remove leading and trailing slashes
