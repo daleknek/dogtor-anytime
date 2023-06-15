@@ -23,6 +23,10 @@ class Router {
             'controller' => 'AppointmentsController',
             'action' => 'index'
         ],
+        'appointments' => [
+            'controller' => 'AppointmentsController',
+            'action' => 'index'
+        ],
         'landingPageLoggedOut' => [
             'controller' => 'LandingPageLoggedOutController',
             'action' => 'index'
