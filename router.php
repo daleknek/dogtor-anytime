@@ -24,8 +24,8 @@ class Router {
             'controller' => 'AppointmentsController',
             'action' => 'index'
         ],
-        'appointments' => [
-            'controller' => 'AppointmentsController',
+        'vetAppointments' => [
+            'controller' => 'VetAppointmentsController',
             'action' => 'index'
         ],
         'landingPageLoggedOut' => [
@@ -51,14 +51,8 @@ class Router {
         'results' => [
             'controller' => 'ResultsController',
             'action' => 'index'
-        ],
-
-        'clinic' => [
-            'controller' => 'ClinicController',
-            'action' => 'index'
-        ],
-
-
+        ]
+        
 
         // add more routes
       ];
