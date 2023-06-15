@@ -56,8 +56,8 @@
         <a class="navbar-brand" href="#">DogtorAnytime</a>
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <div class="col-md-3 text-end" >
-                <button type="button" class="btn btn-outline-primary me-2">Login</button>
-                <button type="button" class="btn btn-primary">Sign-up</button>
+              <a href="login" class="btn btn-outline-primary me-2">Login</a>
+              <a href="signup" class="btn btn-outline-primary me-2">Sign-up</a>
             </div>
         </div>
       </div>
@@ -96,10 +96,10 @@
         <div class="col-md-4">
           <ul class="nav justify-content-end">
             <li class="nav-item">
-              <a href="#" class="nav-link px-2 text-muted">About Us</a>
+              <a href="aboutUs" class="nav-link px-2 text-muted">About Us</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link px-2 text-muted">Contact Us</a>
+              <a href="contactUs" class="nav-link px-2 text-muted">Contact Us</a>
             </li>
           </ul>
         </div>

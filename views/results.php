@@ -75,13 +75,13 @@
                   class="rounded-circle" />
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">My Profile</a></li>
+                <li><a class="dropdown-item" href="editProfile">My Profile</a></li>
                 <li><a class="dropdown-item" href="#">My Appointments</a></li>
                 <li>
                   <hr class="dropdown-divider" />
                 </li>
                 <li>
-                  <a class="dropdown-item sign-out" href="#">Sign out</a>
+                  <a class="dropdown-item sign-out" href="landingPageLoggedOut">Sign out</a>
                 </li>
               </ul>
             </li>
@@ -208,7 +208,29 @@
 
   <footer class="footer">
     <div class="container">
-      <span class="text-muted">© 2023 DogtorAnytime. All rights reserved.</span>
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <p class="text-muted text-start">© 2023 DogtorAnytime</p>
+        </div>
+        <div
+          class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0">
+          <a href="/" class="link-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32">
+              <use xlink:href="#bootstrap"></use>
+            </svg>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <ul class="nav justify-content-end">
+            <li class="nav-item">
+              <a href="aboutUs" class="nav-link px-2 text-muted">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a href="contactUs" class="nav-link px-2 text-muted">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </footer>
 
