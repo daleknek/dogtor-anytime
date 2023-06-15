@@ -72,7 +72,7 @@
                   class="dropdown-menu dropdown-menu-end"
                   aria-labelledby="navbarDropdown"
                 >
-                  <li><a class="dropdown-item" href="editProfile">My Profile</a></li>
+                  <li><a class="dropdown-item" href="myprofile">My Profile</a></li>
                   <li><a class="dropdown-item" href="#">My Appointments</a></li>
                   <li><hr class="dropdown-divider" /></li>
                   <li>

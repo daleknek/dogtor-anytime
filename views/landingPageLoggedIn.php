@@ -62,7 +62,7 @@
               <img src="https://github.com/mdo.png" alt="Profile Picture" width="32" height="32" class="rounded-circle">
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="editProfile">My Profile</a></li>
+              <li><a class="dropdown-item" href="myprofile">My Profile</a></li>
               <li><a class="dropdown-item" href="#">My Appointments</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item sign-out" href="landingPageLoggedOut">Sign out</a></li>
@@ -80,8 +80,8 @@
         <div class="col-md-8">
           <div class="search-bar">
             <div class="input-group">
-              <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon">
-              <button type="button" class="btn btn-primary">Search</button>
+              <input id="searchInput" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon">
+              <button id="searchButton" type="button" class="btn btn-primary">Search</button>
             </div>
           </div>
         </div>
@@ -118,6 +118,13 @@
   </footer>
   
   <script src="js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById("searchButton").addEventListener("click", function() {
+      var searchInput = document.getElementById("searchInput").value;
+      var url = "results?search=" + encodeURIComponent(searchInput);
+      window.location.href = url;
+    });
+  </script>
 
 </body>
 </html>
