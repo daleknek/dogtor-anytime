@@ -1,11 +1,9 @@
 <?php
 // connects to the database
-//replace 'localhost', 'database_name', 'username', and 'password' 
-//with the actual database host, name, username, and password
 
 $host = 'localhost';
-$db   = 'database_name';
-$user = 'username';
+$db   = 'dogtorDB';
+$user = 'user';
 $pass = 'password';
 $charset = 'utf8mb4';
 
@@ -18,7 +16,7 @@ $opt = [
 $pdo = new PDO($dsn, $user, $pass, $opt);
 
 // fetches vets from the database
-$stmt = $pdo->query('SELECT id, name FROM vets');
+$stmt = $pdo->query('SELECT vetId, name FROM vet');
 $vets = $stmt->fetchAll();
 
 // outputs vets as JSON
