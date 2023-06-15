@@ -75,13 +75,13 @@
                   class="rounded-circle" />
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">My Profile</a></li>
+                <li><a class="dropdown-item" href="editProfile">My Profile</a></li>
                 <li><a class="dropdown-item" href="#">My Appointments</a></li>
                 <li>
                   <hr class="dropdown-divider" />
                 </li>
                 <li>
-                  <a class="dropdown-item sign-out" href="#">Sign out</a>
+                  <a class="dropdown-item sign-out" href="landingPageLoggedOut">Sign out</a>
                 </li>
               </ul>
             </li>
@@ -95,100 +95,67 @@
     <div class="container">
 
       <div class="input-group">
-        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+        <input id= "search_text" type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
           aria-describedby="search-addon" />
-        <button type="button" class="btn btn-outline-primary">Search</button>
+        <button type="button" class="btn btn-outline-primary" onclick="search_func()">Search</button>
       </div>
 
       <!-- Card deck -->
       <div class="card-deck row">
 
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <!-- Card -->
-          <div class="card">
+      <?php
+if (isset($_GET['search'])) {
+  $search = $_GET['search'];
 
-            <!--Card image-->
-            <div class="view overlay">
-              <img class="card-img-top custom-card-img" src="images/vet1.jpg" alt="Vet1">
-              <a href="#!">
-                <div class="mask rgba-white-slight"></div>
-              </a>
-            </div>
+  // Simulating a database query and results
+  $sampleData = [
+    ['column_name' => 'Result 1', 'image' => 'images/vet1.jpg', 'name' => 'Dr. Vet'],
+    ['column_name' => 'Result 2', 'image' => 'images/vet2.jpg', 'name' => 'Jane Doe'],
+    ['column_name' => 'Result 3', 'image' => 'images/vet3.jpg', 'name' => 'Dr. Birdy']
+  ];
 
-            <!--Card content-->
-            <div class="card-body">
+  // Filter the sample data based on the search term
+  $filteredData = array_filter($sampleData, function ($row) use ($search) {
+    return strpos(strtolower($row['name']), strtolower($search)) !== false;
+  });
 
-              <!--Title-->
-              <h4 class="card-title">Dr. Vet</h4>
-              <!--Text-->
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-              <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-              <button type="button" class="btn btn-primary">Read more</button>
+  // Loop through the filtered data and generate HTML output
+  foreach ($filteredData as $row) {
+    $result = $row['column_name'];
+    $image = $row['image'];
+    $name = $row['name'];
 
-            </div>
-
-          </div>
-          <!-- Card -->
+    // Generate HTML output for each result
+    $html = <<<HTML
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <!-- Card -->
+      <div class="card">
+        <!--Card image-->
+        <div class="view overlay">
+          <img class="card-img-top custom-card-img" src="$image" alt="Card image cap">
+          <a href="#!">
+            <div class="mask rgba-white-slight"></div>
+          </a>
         </div>
-
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <!-- Card -->
-          <div class="card mb-4">
-
-            <!--Card image-->
-            <div class="view overlay">
-              <img class="card-img-top custom-card-img" src="images/vet2.jpg" alt="Vet2">
-              <a href="#!">
-                <div class="mask rgba-white-slight"></div>
-              </a>
-            </div>
-
-            <!--Card content-->
-            <div class="card-body">
-
-              <!--Title-->
-              <h4 class="card-title">Jane Doe</h4>
-              <!--Text-->
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-              <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-              <button type="button" class="btn btn-primary">Read more</button>
-
-            </div>
-
-          </div>
-          <!-- Card -->
+        <!--Card content-->
+        <div class="card-body">
+          <!--Title-->
+          <h4 class="card-title">$name</h4>
+          <!--Text-->
+          <p class="card-text">$result</p>
+          <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+          <button type="button" class="btn btn-primary">Read more</button>
         </div>
+      </div>
+      <!-- Card -->
+    </div>
+    HTML;
 
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <!-- Card -->
-          <div class="card">
+    echo $html;
+  }
+}
+?>
 
-            <!--Card image-->
-            <div class="view overlay">
-              <img class="card-img-top custom-card-img" src="images/vet3.jpg" alt="Vet3">
-              <a href="#!">
-                <div class="mask rgba-white-slight"></div>
-              </a>
-            </div>
-
-            <!--Card content-->
-            <div class="card-body">
-
-              <!--Title-->
-              <h4 class="card-title">Dr. Birdy</h4>
-              <!--Text-->
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-              <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-              <button type="button" class="btn btn-primary">Read more</button>
-
-            </div>
-
-          </div>
-          <!-- Card -->
-        </div>
 
       </div>
       <!-- Card deck -->
@@ -208,11 +175,42 @@
 
   <footer class="footer">
     <div class="container">
-      <span class="text-muted">© 2023 DogtorAnytime. All rights reserved.</span>
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <p class="text-muted text-start">© 2023 DogtorAnytime</p>
+        </div>
+        <div
+          class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0">
+          <a href="/" class="link-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32">
+              <use xlink:href="#bootstrap"></use>
+            </svg>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <ul class="nav justify-content-end">
+            <li class="nav-item">
+              <a href="aboutUs" class="nav-link px-2 text-muted">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a href="contactUs" class="nav-link px-2 text-muted">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </footer>
 
   <script src="js/bootstrap.bundle.min.js"></script>
+  <script>
+  function search_func() {
+    console.log('asdasdasd')
+    let val = document.getElementById('search_text').value;
+    window.location.href = window.location.pathname + '?search=' + encodeURIComponent(val);
+
+  }
+  </script>
+
 </body>
 
 </html>

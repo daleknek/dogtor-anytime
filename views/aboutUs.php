@@ -72,11 +72,11 @@
                   class="dropdown-menu dropdown-menu-end"
                   aria-labelledby="navbarDropdown"
                 >
-                  <li><a class="dropdown-item" href="#">My Profile</a></li>
+                  <li><a class="dropdown-item" href="editProfile">My Profile</a></li>
                   <li><a class="dropdown-item" href="#">My Appointments</a></li>
                   <li><hr class="dropdown-divider" /></li>
                   <li>
-                    <a class="dropdown-item sign-out" href="#">Sign out</a>
+                    <a class="dropdown-item sign-out" href="landingPageLoggedOut">Sign out</a>
                   </li>
                 </ul>
               </li>
@@ -143,10 +143,10 @@
           <div class="col-md-4">
             <ul class="nav justify-content-end">
               <li class="nav-item">
-                <a href="#" class="nav-link px-2 text-muted">About Us</a>
+                <a href="aboutUs" class="nav-link px-2 text-muted">About Us</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link px-2 text-muted">Contact Us</a>
+                <a href="contactUs" class="nav-link px-2 text-muted">Contact Us</a>
               </li>
             </ul>
           </div>

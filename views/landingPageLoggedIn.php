@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
+
   <style>
     body {
       margin: 0;
@@ -57,15 +58,15 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="Profile Picture" width="32" height="32" class="rounded-circle">
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">My Profile</a></li>
-                <li><a class="dropdown-item" href="#">My Appointments</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item sign-out" href="#">Sign out</a></li>
-              </ul>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://github.com/mdo.png" alt="Profile Picture" width="32" height="32" class="rounded-circle">
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="editProfile">My Profile</a></li>
+              <li><a class="dropdown-item" href="#">My Appointments</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item sign-out" href="landingPageLoggedOut">Sign out</a></li>
+            </ul>
             </li>
           </ul>
         </div>
@@ -105,10 +106,10 @@
         <div class="col-md-4">
           <ul class="nav justify-content-end">
             <li class="nav-item">
-              <a href="#" class="nav-link px-2 text-muted">About Us</a>
+              <a href="aboutUs" class="nav-link px-2 text-muted">About Us</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link px-2 text-muted">Contact Us</a>
+              <a href="contactUs" class="nav-link px-2 text-muted">Contact Us</a>
             </li>
           </ul>
         </div>
@@ -117,5 +118,6 @@
   </footer>
   
   <script src="js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
