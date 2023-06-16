@@ -58,21 +58,15 @@
           <div class="col-md-6">
             <h1>About Us</h1>
             <p class="mt-4">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Accusamus eum iure possimus distinctio repellendus nostrum
-              quisquam perferendis est ex vitae odio et dolorem pariatur eius,
-              adipisci fugit, quae hic ipsa?
-            </p>
+            Welcome to DogtorAnytime, your go-to destination for finding the perfect veterinarian for your beloved pet in Athens! We understand that your furry friends deserve the best care, and that's why we're here to help.</p>
+            <p>Booking and managing your pet's appointment with a veterinarian through our web app is a breeze. We have designed our platform to make the appointment booking process as easy and convenient as possible </p>
           </div>
         </div>
         <div class="row mt-3">
           <div class="col-md-6">
-            <p class="mt-4">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Accusamus eum iure possimus distinctio repellendus nostrum
-              quisquam perferendis est ex vitae odio et dolorem pariatur eius,
-              adipisci fugit, quae hic ipsa?
-            </p>
+            <p class="mt-4"> Simply visit our user-friendly web app, search for veterinarians in Athens based on your pet's needs, explore detailed vet profiles, and select an appointment time that works best for you and your pet's schedule. </p>
+
+            <p> With DogtorAnytime, finding the right veterinarian and booking their services has never been easier!</p>
           </div>
           <div class="col-md-6">
             <img

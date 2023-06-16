@@ -3,15 +3,12 @@
       session_start();
   }
   
-  // Temporary mocking for testing
-  $_SESSION['patientId'] = 1;
-  
   require 'Config/dbConnect.php';
   
-  $user_logged_in = isset($_SESSION['patientId']);
+  $user_logged_in = isset($_SESSION['id']);
 
   if ($user_logged_in) {
-    $patientId = $_SESSION['patientId'];
+    $patientId = $_SESSION['id'];
     
     $sql = "SELECT name FROM patient WHERE patientId = ?";
     $stmt = $conn->prepare($sql);
@@ -121,7 +118,20 @@
       </div>
     </div>
   </footer>
-  
+
   <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.querySelector('.search-bar button').addEventListener('click', () => {
+          const searchInput = document.querySelector('.search-bar input').value.trim();
+          if (searchInput === '') {
+            // Show danger message if input is empty
+            alert('Please enter a search query.');
+          } else {
+            // Redirect to results page
+            window.location.href = 'results?search=' + encodeURIComponent(searchInput);
+          }
+      });
+    </script>
+
 </body>
 </html>

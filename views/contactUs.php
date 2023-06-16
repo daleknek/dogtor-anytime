@@ -116,10 +116,8 @@ php
           <div class="col">
               <div class="py-5 text-center">
                   <h2>Let's get in touch!</h2>
-                  <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni fugiat,
-                    deserunt illum ab, nulla amet nobis non odio placeat tenetur veniam
-                    aspernatur ad consequatur. Quo sequi nesciunt dolor harum nobis.
+                  <p> Fill the form below and our team will promptly get back to you and provide the assistance you need.
+                  We look forward to hearing from you and ensuring that your experience with DogtorAnytime is exceptional!
                   </p>
                 </div>
           </div>
