@@ -28,14 +28,14 @@ class Router {
             'controller' => 'VetAppointmentsController',
             'action' => 'index'
         ],
-        'landingPageLoggedOut' => [
-            'controller' => 'LandingPageLoggedOutController',
+        'homepage' => [
+            'controller' => 'HomePageController',
             'action' => 'index'
         ],
-        'landingPageLoggedIn' => [
-            'controller' => 'LandingPageLoggedInController',
-            'action' => 'index'
-        ],
+        // 'landingPageLoggedIn' => [
+        //     'controller' => 'LandingPageLoggedInController',
+        //     'action' => 'index'
+        // ],
         'aboutUs' => [
             'controller' => 'AboutUsController',
             'action' => 'index'

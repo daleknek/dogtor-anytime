@@ -62,34 +62,8 @@
 </head>
 
 <body class="bs-body-color-255,255,255">
-  <header>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-        <a class="navbar-brand" href="#">DogtorAnytime</a>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="Profile Picture" width="32" height="32"
-                  class="rounded-circle" />
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="myprofile">My Profile</a></li>
-                <li><a class="dropdown-item" href="#">My Appointments</a></li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-                <li>
-                  <a class="dropdown-item sign-out" href="landingPageLoggedOut">Sign out</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
+  
+<?php include 'header.php'; ?>
 
   <main class="my-5 main-section">
     <div class="container">
@@ -102,37 +76,38 @@
 
       <!-- Card deck -->
       <div class="card-deck row">
+        <?php
+      require 'Config/dbConnect.php';
 
-      <?php
-if (isset($_GET['search'])) {
-  $search = $_GET['search'];
+      if (isset($_GET['search'])) {
+        $search = $_GET['search'];
 
-  // Simulating a database query and results
-  $sampleData = [
-    ['column_name' => 'Result 1', 'image' => 'images/vet1.jpg', 'name' => 'Dr. Vet'],
-    ['column_name' => 'Result 2', 'image' => 'images/vet2.jpg', 'name' => 'Jane Doe'],
-    ['column_name' => 'Result 3', 'image' => 'images/vet3.jpg', 'name' => 'Dr. Birdy']
-  ];
+      // Prepare a SQL statement to search for matching veterinarians
+      $stmt = $conn->prepare("SELECT * FROM vet WHERE name LIKE ? OR surname LIKE ?");
+      $stmt->bind_param("ss", $searchPattern, $searchPattern);
+      $searchPattern = "%$search%";
+      $stmt->execute();
 
-  // Filter the sample data based on the search term
-  $filteredData = array_filter($sampleData, function ($row) use ($search) {
-    return strpos(strtolower($row['name']), strtolower($search)) !== false;
-  });
+      // Fetch all matching veterinarians as an associative array
+      $veterinarians = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
-  // Loop through the filtered data and generate HTML output
-  foreach ($filteredData as $row) {
-    $result = $row['column_name'];
-    $image = $row['image'];
-    $name = $row['name'];
+      // Loop through the results and generate HTML output
+      foreach ($veterinarians as $vet) {
+        $vetId = $vet['vetId'];
+        $clinic = $vet['clinic'];
+        $name = $vet['name'];
+        $surname = $vet['surname'];
+        $email = $vet['email'];
+        $aboutUs = $vet['aboutUs'];
 
-    // Generate HTML output for each result
+    // Generate HTML output for each veterinarian
     $html = <<<HTML
     <div class="col-xs-12 col-sm-6 col-md-4">
       <!-- Card -->
       <div class="card">
         <!--Card image-->
         <div class="view overlay">
-          <img class="card-img-top custom-card-img" src="$image" alt="Card image cap">
+          <img class="card-img-top custom-card-img" src="path_to_image/$vetId.jpg" alt="Card image cap">
           <a href="#!">
             <div class="mask rgba-white-slight"></div>
           </a>
@@ -140,9 +115,11 @@ if (isset($_GET['search'])) {
         <!--Card content-->
         <div class="card-body">
           <!--Title-->
-          <h4 class="card-title">$name</h4>
+          <h4 class="card-title">$name $surname</h4>
           <!--Text-->
-          <p class="card-text">$result</p>
+          <p class="card-text">Clinic: $clinic</p>
+          <p class="card-text">Email: $email</p>
+          <p class="card-text">About: $aboutUs</p>
           <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
           <button type="button" class="btn btn-primary">Read more</button>
         </div>
@@ -155,7 +132,6 @@ if (isset($_GET['search'])) {
   }
 }
 ?>
-
 
       </div>
       <!-- Card deck -->

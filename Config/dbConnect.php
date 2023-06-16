@@ -1,7 +1,7 @@
 <?php
 // type your $username and $password
 $servername = "localhost";
-$username = "";
+$username = "root";
 $password = "";
 $dbname = "dogtordb";
 

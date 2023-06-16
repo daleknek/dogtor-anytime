@@ -1,3 +1,31 @@
+<?php
+  if (session_status() == PHP_SESSION_NONE) {
+      session_start();
+  }
+  
+  // Temporary mocking for testing
+  $_SESSION['patientId'] = 1;
+  
+  require 'Config/dbConnect.php';
+  
+  $user_logged_in = isset($_SESSION['patientId']);
+
+  if ($user_logged_in) {
+    $patientId = $_SESSION['patientId'];
+    
+    $sql = "SELECT name FROM patient WHERE patientId = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $patientId);
+    $stmt->execute();
+    $stmt->store_result();
+    $stmt->bind_result($user_name);
+    $stmt->fetch();
+
+    $stmt->close();
+  }
+  $conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,23 +74,11 @@
       left: 0;
       width: 100%;
     }
-
   </style>
 </head>
 <body>
-  <header>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-        <a class="navbar-brand" href="#">DogtorAnytime</a>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-            <div class="col-md-3 text-end" >
-              <a href="login" class="btn btn-outline-primary me-2">Login</a>
-              <a href="signup" class="btn btn-outline-primary me-2">Sign-up</a>
-            </div>
-        </div>
-      </div>
-    </nav>
-  </header>
+    
+<?php include 'header.php'; ?>
 
   <main class="main-section">
     <div class="container d-flex justify-content-center align-items-center">
@@ -85,8 +101,7 @@
         <div class="col-md-4 mb-3">
           <p class="text-muted text-start">© 2023 DogtorAnytime</p>
         </div>
-        <div
-          class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0">
+        <div class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0">
           <a href="/" class="link-dark text-decoration-none">
             <svg class="bi me-2" width="40" height="32">
               <use xlink:href="#bootstrap"></use>

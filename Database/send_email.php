@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $headers .= "Reply-To: $email\r\n";
 
   // Send the email
-  $to = "your-email@example.com";  // Replace with your email address
+  $to = "xristmor@gmail.com";  // Replace with your email address
   $subject = "New Contact Form Submission";
   $success = mail($to, $subject, $body, $headers);
 
