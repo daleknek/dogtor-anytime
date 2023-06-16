@@ -2,7 +2,26 @@
 <html>
 <head>
 
-<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+<?php
+require 'Config/dbConnect.php';
+
+$vetId = intval($_GET['vetId']);
+
+$result = $conn->query("SELECT * FROM vet WHERE vetId = $vetId");
+
+// check the vet is found
+if ($result->num_rows > 0) {
+
+    // gets the first vet
+    $vet = $result->fetch_assoc();
+} else {
+
+    echo "No vet found with ID $vetId";
+}
+
+$conn->close();
+?>
+
 
 </head>
 <style>
@@ -44,29 +63,23 @@
                         <img src="images/clinicphoto.jpg" class="clinic-photo" alt="clinicphoto">
                     </div>
                     <div class="col-md-8"> 
-                        <p class="h2">Vet Clinic</p> <!-- this has to change dynamically -->
+                        <p class="h2"><?php echo $vet['name'];?></p> <!-- changes dynamically -->
                         <dl class="row">
                             <dt class="col-sm-3">Address</dt>
-                            <dd class="col-sm-9">1 Somewhere str, 135 79, Athens</dd>
+                            <dd class="col-sm-9"><?php echo $vet['address'];?></dd> <!-- changes dynamically -->
                             <dt class="col-sm-3">Contact</dt>
                             <dd class="col-sm-9">
-                              <p>+30 210 67890123</p>
+                              <p><?php echo $vet['phone'];?></p> <!-- changes dynamically -->
                             </dd>
                             <dt class="col-sm-3">Hours</dt>
-                            <dd class="col-sm-9">9am - 9pm</dd>
+                            <dd class="col-sm-9"><?php echo $vet['hours'];?></dd> <!-- changes dynamically -->
                         </dl>
                     </div>
                 </div>
                 <br> 
             <div class="aboutme">
-                <p class="h5 text-muted">About Me</p>
-                <p>Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. 
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-                    Phasellus hendrerit. 
-                    Pellentesque aliquet nibh nec urna. 
-                    In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. 
-                    Nullam mollis. Phasellus hendrerit.
-                </p>
+                <p class="h5 text-muted">About Us</p>
+                <p><?php echo $vet['aboutUs']; ?></p> <!-- changes dynamically -->
                 <p class="h6 text-muted">Specialization:
                     <ul>
                       <li>Lorem</li>
@@ -80,8 +93,9 @@
             <!-- Placeholder for calendar -->
         </div>
     </div>
-    <script>
 
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+    <script>
     document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
     

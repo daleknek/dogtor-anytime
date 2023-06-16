@@ -43,36 +43,77 @@
     </style>
 </head>
 <body style="background-image: url('images/pets.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-    <nav class="navbar fixed-top navbar-light bg-light">
+
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "dogtorDB";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die('Connect Error: ' . $conn->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST["name"];
+    $surname = $_POST["surname"];
+    $email = $_POST["email"];
+    $password = $_POST["password"]; 
+   $userType = $_POST["userType"];
+    print_r($userType);
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      $userType = $_POST["userType"];
+      echo "User type: " . $userType;
+  }
+  
+
+    if ($userType == 'vet') {
+        $stmt = $conn->prepare("INSERT INTO vet (name, surname, email, password) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $name, $surname, $email, $password);
+    } elseif ($userType == 'patient') {
+        $stmt = $conn->prepare("INSERT INTO patient (name, surname, email, password) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $name, $surname, $email, $password);
+    } else {
+        die("Invalid user type!");
+    }
+
+    $stmt->execute();
+    echo "New record created successfully";
+    $stmt->close();
+}
+?>  
+<nav class="navbar fixed-top navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Dogtor Anytime</a>
         </div>
     </nav>
     <main class="form text-center">
-        <form action="http://localhost/dogtor-anytime/index.php?route=login" method="post">
+        <form action="" method="post"> 
             <h1 class="h3 mb-3 fw-normal">Sign Up</h1>
             <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Name" required>
+                <input type="text" class="form-control" id="floatingInput" placeholder="Name" name="name" required>
                 <label for="floatingInput">Name</label>
             </div>
             <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Surname" required>
+                <input type="text" class="form-control" id="floatingInput" placeholder="Surname" name="surname" required>
                 <label for="floatingPassword">Surname</label>
             </div>
             <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="Email"required>
+                <input type="email" class="form-control" id="floatingInput" placeholder="Email" name="email" required>
                 <label for="floatingPassword">Email</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
                 <label for="floatingPassword">Password</label>
             </div>
             <div class="container mb-3 form-check form-check-inline">
                 <label>
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="vet" required> Vet
+                    <input type="radio" name="userType" value="vet" required> Vet
                 </label>
                 <label>
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="patient" required> Patient
+                    <input type="radio" name="userType" value="patient" required> Patient
                 </label>
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
