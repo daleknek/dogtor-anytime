@@ -57,13 +57,20 @@ class Router {
             'controller' => 'ClinicController',
             'action' => 'index'
         ]
+<<<<<<< HEAD
 
         //  'clinic' => [
         //     'controller' => 'ClinicController',
         //     'action' => 'index'
         // ]
 
+=======
+>>>>>>> main
 
+        //  'clinic' => [
+        //     'controller' => 'ClinicController',
+        //     'action' => 'index'
+        // ]
 
         // add more routes
       ];
@@ -85,6 +92,11 @@ class Router {
     //         echo "404 Not Found";
     //     }
     // }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> main
     public function dispatch($url) {
         // Remove leading and trailing slashes
             $url = trim($url, '/');

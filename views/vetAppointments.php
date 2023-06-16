@@ -30,11 +30,12 @@
 
     </div>
     <div class="container py-5">
-        <h1 class="text-center">My Appointments</h1>
+        <h1 class="text-center">My Patient Appointments</h1>
 
         <div class="card mb-3" data-appointment-id="1">
             <div class="card-body">
-                <h5 class="card-title">Vet: Dr. Smith</h5>
+                <h5 class="card-title">Patient: Steve Carlsberg</h5>
+                <p class="card-text">Pet: five headed dragon</p>
                 <p class="card-text">Date: 14/06/2023</p>
                 <p class="card-text">Time: 10:00 AM</p>
                
@@ -46,7 +47,8 @@
         
         <div class="card mb-3" data-appointment-id="2">
             <div class="card-body">
-                <h5 class="card-title">Vet: Dr. Gillan</h5>
+                <h5 class="card-title">Patient: Cecil Baldwin</h5>
+                <p class="card-text">Pet: cat</p>
                 <p class="card-text">Date: 16/06/2023</p>
                 <p class="card-text">Time: 12:00 AM</p>
                
@@ -57,7 +59,8 @@
         </div>
         <div class="card mb-3" data-appointment-id="3">
             <div class="card-body">
-                <h5 class="card-title">Vet: Dr. Smith</h5>
+                <h5 class="card-title">Patient: Tamika Flynn</h5>
+                <p class="card-text">Pet: dog</p>
                 <p class="card-text">Date: 18/07/2023</p>
                 <p class="card-text">Time: 10:00 AM</p>
                
@@ -83,8 +86,8 @@
             <label for="vetSelect" class="form-label">Select Vet</label>
             <select class="form-select" id="vetSelect">
               <option selected>Choose...</option>
-              <option value="1">Dr. Smith</option>
-              <option value="2">Dr. Gillan</option>
+              <option value="1">Cecil Baldwin</option>
+              <option value="2">Tamika Flynn</option>
 
             </select>
           </div>
@@ -156,10 +159,10 @@
         var time = document.getElementById('addTime').value;
 
         var formData = new FormData();
-          formData.append('vetId', vetId);
-          formData.append('date', date);
-          formData.append('time', time);
-          formData.append('task', 'create');
+        formData.append('vetId', vetId);
+        formData.append('date', date);
+        formData.append('time', time);
+        formData.append('task', 'create');
 
         fetch('AppointmentQueries.php', {
             method: 'POST',

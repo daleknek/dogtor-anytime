@@ -44,6 +44,47 @@
     .text-center {
       text-align: center;
     }
+
+    To move the alert further away from the header, you can add some margin to the top of the alert element. Here's an updated version of the contactus.php file with the alert positioned below the header:
+
+php
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .main-section {
+      background-color: #fffefe;
+      min-height: calc(100vh - 56px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .pets-image {
+      max-width: 80%;
+      height: 80%;
+      padding: 30px;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .alert {
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body class="bs-body-color-255,255,255">
@@ -77,7 +118,7 @@
                 class="dropdown-menu dropdown-menu-end"
                 aria-labelledby="navbarDropdown"
               >
-                <li><a class="dropdown-item" href="editProfile">My Profile</a></li>
+                <li><a class="dropdown-item" href="myprofile">My Profile</a></li>
                 <li><a class="dropdown-item" href="#">My Appointments</a></li>
                 <li><hr class="dropdown-divider" /></li>
                 <li>
@@ -94,6 +135,25 @@
   <main class="my-5 main-section">
     <div class="container">
 
+    <?php
+      $status = $_GET['status'] ?? '';
+
+      if ($status === 'success') {
+          echo '
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            Thank you for your message. We will get back to you soon.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>';
+      }
+      elseif ($status === 'error') {
+        echo '
+        <div class="alert alert-danger alert-dismissible fade show my-4" role="alert">
+          Sorry, there was a problem sending your message. Please try again later.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>';
+      }
+      ?>
+
       <div class="row">
           <div class="col">
               <div class="py-5 text-center">
@@ -106,39 +166,41 @@
                 </div>
           </div>
       </div>
-      <form action="#" method="post">
+      <form action="Database/send_email.php" method="post">
         <div class="row">
           <div class="col">
             <div class="form-group">
-              <label for="name">Name:</label>
+              <label for="name">Name</label>
               <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
             </div>
           </div>
           <div class="col">
             <div class="form-group">
-              <label for="email">Email:</label>
+              <label for="email">Email</label>
               <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
             </div>
           </div>
         </div>
         <div class="form-group">
-          <label for="subject">Subject:</label>
+          <label for="subject">Subject</label>
           <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter the subject">
         </div>
         <div class="form-group">
-          <label for="message">Message:</label>
+          <label for="message">Message</label>
           <textarea class="form-control" id="message" name="message" rows="5" placeholder="Enter your message"></textarea>
         </div>
         <div class="d-flex justify-content-center mt-3">
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
       </form>
+
       <div class="row">
         <div class="col text-center">
           <img src="images/pets3.jpeg" alt="pets" class="img-fluid pets-image" />
         </div>
       </div>
     </div>
+
   </main>
 
   <footer class="footer">
@@ -170,5 +232,6 @@
   </footer>
 
   <script src="js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
