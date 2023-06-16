@@ -1,4 +1,5 @@
 <?php
+// type your $username and $password
 $servername = "localhost";
 $username = "";
 $password = "";
