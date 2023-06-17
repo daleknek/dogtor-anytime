@@ -42,49 +42,8 @@
     </style>
   </head>
   <body>
-    <header>
-      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-          <a class="navbar-brand" href="#">DogtorAnytime</a>
-          <div
-            class="collapse navbar-collapse justify-content-end"
-            id="navbarSupportedContent"
-          >
-            <ul class="navbar-nav">
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <img
-                    src="https://github.com/mdo.png"
-                    alt="Profile Picture"
-                    width="32"
-                    height="32"
-                    class="rounded-circle"
-                  />
-                </a>
-                <ul
-                  class="dropdown-menu dropdown-menu-end"
-                  aria-labelledby="navbarDropdown"
-                >
-                  <li><a class="dropdown-item" href="myprofile">My Profile</a></li>
-                  <li><a class="dropdown-item" href="#">My Appointments</a></li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li>
-                    <a class="dropdown-item sign-out" href="landingPageLoggedOut">Sign out</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+
+  <?php include 'header.php'; ?>
 
     <main class="my-5 main-section">
       <div class="container">
@@ -99,21 +58,15 @@
           <div class="col-md-6">
             <h1>About Us</h1>
             <p class="mt-4">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Accusamus eum iure possimus distinctio repellendus nostrum
-              quisquam perferendis est ex vitae odio et dolorem pariatur eius,
-              adipisci fugit, quae hic ipsa?
-            </p>
+            Welcome to DogtorAnytime, your go-to destination for finding the perfect veterinarian for your beloved pet in Athens! We understand that your furry friends deserve the best care, and that's why we're here to help.</p>
+            <p>Booking and managing your pet's appointment with a veterinarian through our web app is a breeze. We have designed our platform to make the appointment booking process as easy and convenient as possible </p>
           </div>
         </div>
         <div class="row mt-3">
           <div class="col-md-6">
-            <p class="mt-4">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Accusamus eum iure possimus distinctio repellendus nostrum
-              quisquam perferendis est ex vitae odio et dolorem pariatur eius,
-              adipisci fugit, quae hic ipsa?
-            </p>
+            <p class="mt-4"> Simply visit our user-friendly web app, search for veterinarians in Athens based on your pet's needs, explore detailed vet profiles, and select an appointment time that works best for you and your pet's schedule. </p>
+
+            <p> With DogtorAnytime, finding the right veterinarian and booking their services has never been easier!</p>
           </div>
           <div class="col-md-6">
             <img

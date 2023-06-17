@@ -88,49 +88,7 @@ php
   </style>
 </head>
 <body class="bs-body-color-255,255,255">
-  <header>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-        <a class="navbar-brand" href="#">DogtorAnytime</a>
-        <div
-          class="collapse navbar-collapse justify-content-end"
-          id="navbarSupportedContent"
-        >
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <img
-                  src="https://github.com/mdo.png"
-                  alt="Profile Picture"
-                  width="32"
-                  height="32"
-                  class="rounded-circle"
-                />
-              </a>
-              <ul
-                class="dropdown-menu dropdown-menu-end"
-                aria-labelledby="navbarDropdown"
-              >
-                <li><a class="dropdown-item" href="myprofile">My Profile</a></li>
-                <li><a class="dropdown-item" href="#">My Appointments</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item sign-out" href="landingPageLoggedOut">Sign out</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
+<?php include 'header.php'; ?>
 
   <main class="my-5 main-section">
     <div class="container">
@@ -158,10 +116,8 @@ php
           <div class="col">
               <div class="py-5 text-center">
                   <h2>Let's get in touch!</h2>
-                  <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni fugiat,
-                    deserunt illum ab, nulla amet nobis non odio placeat tenetur veniam
-                    aspernatur ad consequatur. Quo sequi nesciunt dolor harum nobis.
+                  <p> Fill the form below and our team will promptly get back to you and provide the assistance you need.
+                  We look forward to hearing from you and ensuring that your experience with DogtorAnytime is exceptional!
                   </p>
                 </div>
           </div>
