@@ -44,8 +44,8 @@ class Router {
             'controller' => 'ContactUsController',
             'action' => 'index'
         ],
-        'editProfile' => [
-            'controller' => 'EditProfileController',
+        'myprofile' => [
+            'controller' => 'MyProfileController',
             'action' => 'index'
         ],
         'results' => [
