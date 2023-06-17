@@ -1,8 +1,8 @@
 <?php
 // type your $username and $password
 $servername = "localhost";
-$username = "arro";
-$password = "arro";
+$username = "root";
+$password = "";
 $dbname = "dogtordb";
 
 echo "test";

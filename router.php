@@ -29,10 +29,19 @@ class Router {
             'controller' => 'LandingPageLoggedOutController',
             'action' => 'index'
         ],
-        'landingPageLoggedIn' => [
-            'controller' => 'LandingPageLoggedInController',
+        
+        'appointments' => [
+            'controller' => 'AppointmentsController',
             'action' => 'index'
         ],
+        'homepage' => [
+            'controller' => 'HomePageController',
+            'action' => 'index'
+        ],
+        // 'landingPageLoggedIn' => [
+        //     'controller' => 'LandingPageLoggedInController',
+        //     'action' => 'index'
+        // ],
         'aboutUs' => [
             'controller' => 'AboutUsController',
             'action' => 'index'
@@ -41,8 +50,8 @@ class Router {
             'controller' => 'ContactUsController',
             'action' => 'index'
         ],
-        'editProfile' => [
-            'controller' => 'EditProfileController',
+        'myprofile' => [
+            'controller' => 'MyProfileController',
             'action' => 'index'
         ],
         'results' => [
