@@ -50,12 +50,6 @@ $username = "root";
 $password = "";
 $dbname = "dogtorDB";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die('Connect Error: ' . $conn->connect_error);
-}
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["name"];
     $surname = $_POST["surname"];
@@ -68,7 +62,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       echo "User type: " . $userType;
   }
   
-
     if ($userType == 'vet') {
         $stmt = $conn->prepare("INSERT INTO vet (name, surname, email, password) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $name, $surname, $email, $password);
@@ -83,6 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "New record created successfully";
     $stmt->close();
 }
+
 ?>  
 <nav class="navbar fixed-top navbar-light bg-light">
         <div class="container-fluid">
