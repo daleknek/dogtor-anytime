@@ -91,28 +91,51 @@ $conn->close();
     </div>
 
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <script>
+    
     document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
-    
+
+    var vetId = <?php echo json_encode($vetId); ?>;
+
     var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'timeGridWeek', // show a weekly view initially
         selectable: true, // allows user to select time slots
         select: function(info) { // called when user selects a time slot
-            // store selected date and time in local storage
-            localStorage.setItem('selectedDate', info.startStr);
-            localStorage.setItem('selectedTime', info.endStr);
+            alert('Slot selected!');
+            var date = info.startStr;
+            var time = info.endStr;
 
-            // redirect to appointment creation page
-            window.location.href = 'create_appointment.php'; 
-        },
+            // Send AJAX request to server
+            $.ajax({
+                url: 'Database/create_appointment.php',
+                type: 'POST',
+                data: {
+                    date: date,
+                    time: time,
+                    vetId: vetId
+                },
+                success: function(response) {
+                    // Handles response, displays a success message.
+                    alert('Appointment created successfully!');
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    // Handles error
+                    alert('An error occurred while creating the appointment: ' + errorThrown);
+                }
+            });
+        }, 
 
         // fetch appointments from server 
-        events: 'fetch_appointments.php'
+        // events: 'fetch_appointments.php'
     });
-    
+
     calendar.render(); 
 });
+
+
 </script>
 
 </body>
