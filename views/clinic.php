@@ -63,7 +63,7 @@ $conn->close();
                         <img src="images/clinicphoto.jpg" class="clinic-photo" alt="clinicphoto">
                     </div>
                     <div class="col-md-8"> 
-                        <p class="h2"><?php echo $vet['name'];?></p> <!-- changes dynamically -->
+                        <p class="h2"><?php echo $vet['clinic'];?></p> <!-- changes dynamically -->
                         <dl class="row">
                             <dt class="col-sm-3">Address</dt>
                             <dd class="col-sm-9"><?php echo $vet['address'];?></dd> <!-- changes dynamically -->
@@ -81,11 +81,7 @@ $conn->close();
                 <p class="h5 text-muted">About Us</p>
                 <p><?php echo $vet['aboutUs']; ?></p> <!-- changes dynamically -->
                 <p class="h6 text-muted">Specialization:
-                    <ul>
-                      <li>Lorem</li>
-                      <li>Ipsum</li>
-                      <li>Dolor</li>
-                    </ul>
+                    <li><?php echo $vet['specialization']; ?></li>
                 </p>
             </div>
         </div>
