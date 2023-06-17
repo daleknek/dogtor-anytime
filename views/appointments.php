@@ -156,10 +156,10 @@
         var time = document.getElementById('addTime').value;
 
         var formData = new FormData();
-        formData.append('vetId', vetId);
-        formData.append('date', date);
-        formData.append('time', time);
-        formData.append('task', 'create');
+          formData.append('vetId', vetId);
+          formData.append('date', date);
+          formData.append('time', time);
+          formData.append('task', 'create');
 
         fetch('AppointmentQueries.php', {
             method: 'POST',
