@@ -1,34 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Document</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+
     <style>
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
 
         .dropdown-menu .dropdown-item.sign-out {
             color: red;
         }
 
         .main-section {
+
             flex-grow: 1;
             display: flex;
             justify-content: center;
             align-items: center;
             background-image: url('images/pets.jpg');
             background-size: cover;
-            background-position: center bottom;
+            background-position: center;
             background-repeat: no-repeat;
         }
-
+        
         .buttons {
             text-align: center;
         }
@@ -38,12 +26,6 @@
             height: 150px;
             object-fit: cover;
             object-position: center;
-        }
-
-        .footer {
-            background-color: #f8f9fa;
-            padding: 30px;
-            text-align: center;
         }
 
         .form {
@@ -74,8 +56,7 @@
             min-height: 100vh;
         }
     </style>
-</head>
-<body>
+
 <?php include 'header.php'; ?>
 
 <div class="content">
@@ -97,46 +78,10 @@
                     <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required>
                     <label for="floatingPassword">Password</label>
                 </div>
-                <!-- <div class="checkbox mb-3">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Remember me
-                    </label>
-                </div> -->
                 <button class="w-100 btn btn-lg btn-primary" type="submit">Log In</button>
             </form>
         </div>
     </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-3">
-                    <p class="text-muted text-start">© 2023 DogtorAnytime</p>
-                </div>
-                <div
-                        class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0">
-                    <a href="/" class="link-dark text-decoration-none">
-                        <svg class="bi me-2" width="40" height="32">
-                            <use xlink:href="#bootstrap"></use>
-                        </svg>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <ul class="nav justify-content-end">
-                        <li class="nav-item">
-                            <a href="aboutUs" class="nav-link px-2 text-muted">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="contactUs" class="nav-link px-2 text-muted">Contact Us</a>
-                        </li>
-                    </ul>
-                </div>
             </div>
-        </div>
-    </footer>
-</div>
+<?php include 'footer.php'; ?>
 
-<script src="js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>

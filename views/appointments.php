@@ -21,12 +21,7 @@
     </style>
 
 
-<nav class='navbar fixed-top navbar-light bg-light'>
-        <div class='container-fluid'>
-          <a class='navbar-brand' href='#'>Dogtor Anytime</a>
-        </div>
-    </nav>
-    <div class='container py-5' id='alertsContainer'>
+<?php include 'header.php';?>
 
     </div>
     <div class='container py-5'>
@@ -83,8 +78,8 @@
     </div>
   </div>
 </div>
-   
-<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js' integrity='sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz' crossorigin='anonymous'></script>
+<?php include 'footer.php';?>  
+
 <script>
 
     const getAppointmentId = (id) => {
