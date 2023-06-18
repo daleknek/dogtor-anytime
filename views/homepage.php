@@ -4,7 +4,6 @@
   }
   
   require 'Config/dbConnect.php';
-  
   $user_logged_in = isset($_SESSION['id']);
 
   if ($user_logged_in) {
