@@ -42,44 +42,68 @@
 
 
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "dogtorDB";
-
+require 'Config/dbConnect.php';
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+   
     $name = $_POST["name"];
     $surname = $_POST["surname"];
     $email = $_POST["email"];
     $password = $_POST["password"]; 
-   $userType = $_POST["userType"];
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      $userType = $_POST["userType"];
-  }
+    $userType = $_POST["userType"];
+    $userId = "";
   
     if ($userType == 'vet') {
         $stmt = $conn->prepare("INSERT INTO vet (name, surname, email, password) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $name, $surname, $email, $password);
+        $stmt->execute();
+        $userId = $conn->insert_id;
+        // Perform select operation to get the vetId
+        $selectStmt = $conn->prepare("SELECT vetId FROM vet WHERE vetId = ?");
+        $selectStmt->bind_param("i", $userId);
     } elseif ($userType == 'patient') {
         $stmt = $conn->prepare("INSERT INTO patient (name, surname, email, password) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $name, $surname, $email, $password);
+        $stmt->execute();
+        $userId = $conn->insert_id;
+        // Perform select operation to get the patientId
+        $selectStmt = $conn->prepare("SELECT patientId FROM patient WHERE patientId = ?");
+        $selectStmt->bind_param("i", $userId);
     } else {
         die("Invalid user type!");
     }
 
-    $stmt->execute();
-    echo "New record created successfully";
+    $selectStmt->execute();
+    $result = $selectStmt->get_result();
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $_SESSION['id'] = $userType == 'vet' ? $row["vetId"] : $row["patientId"];
+            header("Location: /dogtor-anytime/homepage");
+        }
+    }
+
     $stmt->close();
+    $selectStmt->close();
 }
 
-?> 
+?>  
+
+<script>
+    const redirectToHomePage = () => {
+        console.log('submit');
+        window.location.href = '/dogtor-anytime/homepage';
+    } 
+
+</script>
 
 <?php include 'header.php'; ?>
 
     <main class="main-section">
     <div class="container form text-center">
-        <form submit='event.preventDefault();' id="signUpForm" action="" method="post"> 
-            <h1 class="h3 mb-3 fw-normal">Sign Up</h1>
+        <form id="signUpForm" action="" method="post">     
+        <h1 class="h3 mb-3 fw-normal">Sign Up</h1>
             <div class="form-floating">
                 <input type="text" class="form-control" id="floatingInput" placeholder="Name" name="name" required>
                 <label for="floatingInput">Name</label>
