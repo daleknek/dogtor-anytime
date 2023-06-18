@@ -73,9 +73,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 ?> 
-<script>
-
-</script>
 
 <?php include 'header.php'; ?>
 
@@ -107,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="radio" name="userType" value="patient" required> Patient
                 </label>
             </div>
-            <button onclick='signUp()' class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
         </form>
 </div>
     </main>
