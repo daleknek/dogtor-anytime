@@ -180,7 +180,7 @@
 document.querySelector('button.btn-outline-primary').onclick = search; // replace 'addEventListener' with 'onclick'
 
   </script>
-  <script src="js/bootstrap.bundle.min.js"></script>
+<!-- <script src="js/bootstrap.bundle.min.js"></script> -->
 </body>
 
 </html>
