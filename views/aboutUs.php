@@ -17,13 +17,23 @@
         color: red;
       }
 
-      .main-section {
-        background: url("images/bg_aboutus.webp") center center;
-        min-height: calc(100vh - 56px); /* Subtracting the header height */
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      main {
+        margin: 0;
     }
+    .first-row {
+        margin-top: 50px; /* Adjust the value as desired */
+    }
+      .main-section {
+      background-image: url("images/bg_aboutus.webp");
+      background-position: center 30%; /* Adjust the percentage to control the vertical position */
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      min-height: calc(100vh - 56px); /* Subtracting the header and footer height */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+     }   
 
       .main-image {
         max-width: 80%; /* Set the maximum width */
@@ -45,9 +55,9 @@
 
   <?php include 'header.php'; ?>
 
-    <main class="my-5 main-section">
+    <main class="main-section">
       <div class="container">
-        <div class="row">
+        <div class="row first-row">
           <div class="col-md-6">
             <img
               src="images/aboutus.webp"

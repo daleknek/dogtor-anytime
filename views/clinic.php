@@ -2,27 +2,6 @@
 <html>
 <head>
 
-<?php
-require 'Config/dbConnect.php';
-
-$vetId = intval($_GET['vetId']);
-
-$result = $conn->query("SELECT * FROM vet WHERE vetId = $vetId");
-
-// check the vet is found
-if ($result->num_rows > 0) {
-
-    // gets the first vet
-    $vet = $result->fetch_assoc();
-} else {
-
-    echo "No vet found with ID $vetId";
-}
-
-$conn->close();
-?>
-
-
 </head>
 <style>
     .clinic-photo {
@@ -50,73 +29,116 @@ $conn->close();
         margin-top: 40px;
     }
 </style>
-    <nav class="navbar fixed-top navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Dogtor Anytime</a>
+    <nav class='navbar fixed-top navbar-light bg-light'>
+        <div class='container-fluid'>
+          <a class='navbar-brand' href='#'>Dogtor Anytime</a>
         </div>
     </nav>
-    <body class="custom-bg"> 
-        <div class="row">
-            <div class="col-md-8">
-                <div class="row">
-                    <div class="col-md-4"> 
-                        <img src="images/clinicphoto.jpg" class="clinic-photo" alt="clinicphoto">
+    <body class='custom-bg'>
+        <?php 
+            $clinic =  $vet['clinic'];
+            $address = $vet['address'];
+            $phone =  $vet['phone'];
+            $hours = $vet['hours'];
+            $aboutUs = $vet['aboutUs'];
+            $specialization = $vet['specialization'];
+            print_r($_SESSION);
+            echo "<div class='row'>
+            <div class='col-md-8'>
+                <div class='row'>
+                    <div class='col-md-4'> 
+                        <img src='images/clinicphoto.jpg' class='clinic-photo' alt='clinicphoto'>
                     </div>
-                    <div class="col-md-8"> 
-                        <p class="h2"><?php echo $vet['name'];?></p> <!-- changes dynamically -->
-                        <dl class="row">
-                            <dt class="col-sm-3">Address</dt>
-                            <dd class="col-sm-9"><?php echo $vet['address'];?></dd> <!-- changes dynamically -->
-                            <dt class="col-sm-3">Contact</dt>
-                            <dd class="col-sm-9">
-                              <p><?php echo $vet['phone'];?></p> <!-- changes dynamically -->
+                    <div class='col-md-8'> 
+                        <p class='h2'>
+                        $clinic
+                        </p> 
+                        <dl class='row'>
+                            <dt class='col-sm-3'>Address</dt>
+                            <dd class='col-sm-9'>$address</dd>
+                            <dt class='col-sm-3'>Contact</dt>
+                            <dd class='col-sm-9'>
+                              <p>$phone</p> 
                             </dd>
-                            <dt class="col-sm-3">Hours</dt>
-                            <dd class="col-sm-9"><?php echo $vet['hours'];?></dd> <!-- changes dynamically -->
+                            <dt class='col-sm-3'>Hours</dt>
+                            <dd class='col-sm-9'>$hours</dd>
                         </dl>
                     </div>
                 </div>
                 <br> 
-            <div class="aboutme">
-                <p class="h5 text-muted">About Us</p>
-                <p><?php echo $vet['aboutUs']; ?></p> <!-- changes dynamically -->
-                <p class="h6 text-muted">Specialization:
-                    <ul>
-                      <li>Lorem</li>
-                      <li>Ipsum</li>
-                      <li>Dolor</li>
-                    </ul>
+            <div class='aboutme'>
+                <p class='h5 text-muted'>About Us</p>
+                <p>$aboutUs</p> 
+                <p class='h6 text-muted'>Specialization:
+                    $specialization
                 </p>
             </div>
-        </div>
+        </div>";
+        ?>
         <div class="col-md-4" id="calendar"> 
-            <!-- Placeholder for calendar -->
         </div>
     </div>
 
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js" 
+integrity="sha512-42PE0rd+wZ2hNXftlM78BSehIGzezNeQuzihiBCvUEB3CVxHvsShF86wBWwQORNxNINlBPuq7rG4WWhNiTVHFg==" 
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script>
+    
     document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
-    
+
+    var vetId = <?php echo json_encode($vetId); ?>;
+
     var calendar = new FullCalendar.Calendar(calendarEl, {
+        locale:'us',
         initialView: 'timeGridWeek', // show a weekly view initially
         selectable: true, // allows user to select time slots
-        select: function(info) { // called when user selects a time slot
-            // store selected date and time in local storage
-            localStorage.setItem('selectedDate', info.startStr);
-            localStorage.setItem('selectedTime', info.endStr);
-
-            // redirect to appointment creation page
-            window.location.href = 'create_appointment.php'; 
+        eventTimeFormat: { // like '14:30:00'
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            meridiem: false
         },
 
+        select: info => createAppointment(info),
+
         // fetch appointments from server 
-        events: 'fetch_appointments.php'
+        // events: 'fetch_appointments.php'
     });
-    
+
+    const createAppointment = (info) => { // called when user selects a time slot
+            alert('Slot selected!');
+            console.log(info);
+            const date = moment(info.startStr).format('YYYY-MM-DD');
+            const time = moment(info.endStr).format('hh:mm:ss')
+            console.log(time);
+            // Send AJAX request to server
+            $.ajax({
+                url: '',
+                type: 'POST',
+                data: {
+                    date: date,
+                    time: time,
+                    vetId: vetId
+                },
+                success: function(response) {
+                    // Handles response, displays a success message.
+                    alert('Appointment created successfully!');
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    // Handles error
+                    alert('An error occurred while creating the appointment: ' + errorThrown);
+                }
+            });
+        }
+
     calendar.render(); 
 });
+
+
 </script>
 
 </body>

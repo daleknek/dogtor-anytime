@@ -21,7 +21,7 @@
       background-color: #fffefe;
       min-height: calc(100vh - 56px); /* Subtracting the header height */
       display: flex;
-      justify-content: center;
+      justify-content: center fixed;
       align-items: center;
     }
 
@@ -44,10 +44,6 @@
     .text-center {
       text-align: center;
     }
-
-    To move the alert further away from the header, you can add some margin to the top of the alert element. Here's an updated version of the contactus.php file with the alert positioned below the header:
-
-php
 
 <!DOCTYPE html>
 <html lang="en">
