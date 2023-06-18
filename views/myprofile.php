@@ -24,7 +24,7 @@
             background: url("images/bg_profile.webp") center center;
             min-height: calc(100vh - 72px);
             display: flex;
-            justify-content: center;
+            justify-content: center fixed;
 
             padding-top: 80px;
         }
@@ -205,7 +205,7 @@
 ?>
     <?php include 'header.php'; ?>
 
-    <main class="my-5 main-section">
+    <main class="main-section">
         <?php if ($user_logged_in) : ?>
             <div class="container">
 

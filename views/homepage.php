@@ -83,7 +83,7 @@ $conn->close();
             <div class="col-md-8">
                 <div class="search-bar">
                     <div class="input-group">
-                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon">
+                        <input type="search" class="form-control rounded" placeholder="Looking a vet for...?" aria-label="Search" aria-describedby="search-addon">
                         <button type="button" class="btn btn-primary">Search</button>
                     </div>
                 </div>
