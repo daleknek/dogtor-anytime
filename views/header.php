@@ -17,8 +17,9 @@ if ($user_logged_in) {
     $stmt->store_result();
     $stmt->bind_result($user_name, $user_avatar_blob);
     $stmt->fetch();
-
-    $user_avatar_base64 = base64_encode($user_avatar_blob);
+    if(isset($user_avatar_blob)){   
+      $user_avatar_base64 = base64_encode($user_avatar_blob);
+    }
 
     $stmt->close();
 }

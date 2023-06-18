@@ -39,8 +39,8 @@
               $vetId = $result[$i]['vet'][0]['vetId'];
               $vetName = $result[$i]['vet'][0]['name'];
               $vetSurname = $result[$i]['vet'][0]['surname'];
-              $date = $result[$i]['date'];
-              $time = $result[$i]['time'];
+              $date = $result[$i]['appointmentDate'];
+              $time = $result[$i]['appointmentTime'];
               echo "<div class='card mb-3' data-appointment-id='$appointmentId' data-vet-id='$vetId'>
                     <div class='card-body'>
                       <h5 class='card-title'>Vet: $vetName $vetSurname</h5>
