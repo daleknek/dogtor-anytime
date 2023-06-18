@@ -47,7 +47,7 @@ $conn->close();
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="myprofile">My Profile</a></li>
-              <li><a class="dropdown-item" href="#">My Appointments</a></li>
+              <li><a class="dropdown-item" href="appointments">My Appointments</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
