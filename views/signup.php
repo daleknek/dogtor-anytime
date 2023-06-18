@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -65,20 +62,13 @@
           border-radius: 5px;
         }
     </style>
-</head>
-<body>
+
 
 <?php
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "dogtorDB";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die('Connect Error: ' . $conn->connect_error);
-}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["name"];
@@ -92,7 +82,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       echo "User type: " . $userType;
   }
   
-
     if ($userType == 'vet') {
         $stmt = $conn->prepare("INSERT INTO vet (name, surname, email, password) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $name, $surname, $email, $password);
@@ -107,6 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "New record created successfully";
     $stmt->close();
 }
+
 ?>  
 <?php include 'header.php'; ?>
 
@@ -170,6 +160,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </footer>
 
   <script src="js/bootstrap.bundle.min.js"></script>
-</body>
-    
-</html>
+

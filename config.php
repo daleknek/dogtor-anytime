@@ -2,8 +2,8 @@
 global $pdo;
 
 $host = "localhost";
-$username = "arro";
-$password = "arro";
+$username = "root";
+$password = "";
 $db = "dogtorDB";
 $charset = 'utf8mb4';
 
@@ -15,4 +15,3 @@ $opt = [
 ];
 $pdo = new PDO($dsn, $username, $password, $opt);
 ?>
-
