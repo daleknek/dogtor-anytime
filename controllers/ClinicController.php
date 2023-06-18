@@ -9,7 +9,7 @@ class ClinicController {
     public function index($vetId) {
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $patientId = $_SESSION['user_id'];
+            $patientId = $_SESSION['id'];
             $vetId = intval($_POST['vetId']);
             $date = $_POST['date'];
             $time = $_POST['time'];

@@ -42,7 +42,6 @@
             $hours = $vet['hours'];
             $aboutUs = $vet['aboutUs'];
             $specialization = $vet['specialization'];
-            print_r($_SESSION);
             echo "<div class='row'>
             <div class='col-md-8'>
                 <div class='row'>
