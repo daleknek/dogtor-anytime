@@ -2,11 +2,6 @@
 
     <style>
 
-        body {
-            background-color: #f2f2f2;
-            padding-top: 80px;
-        }
-
         .card-text {
             margin-bottom: 0.50rem;  
         }
@@ -15,17 +10,23 @@
             margin-bottom: 0.50rem; 
         }
 
-        .navbar {
-          padding-top: 10px;
-        }
+        .main-section {
+
+        min-height: calc(100vh - 56px); /* Subtracting the header and footer height */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+      }  
     </style>
 
 
 <?php include 'header.php';?>
 
-    </div>
+    <main class='main-section'>
     <div class='container py-5'>
-        <h1 class='text-center'>My Appointments</h1>
+        <h1 class='text-center mb-4'>My Appointments</h1>
+        <div id='alerts-container'></div>
         <?php
               
           if(count($result) > 0){
@@ -69,7 +70,7 @@
           </div>
           <div class='mb-3'>
             <label for='date' class='form-label'>New Time</label>
-            <input type='time' min="09:00" max="18:00" name="time" class='form-control' id='time'>
+            <input type='time' name="time" class='form-control' id='time'>
           </div>
           <input type='hidden' id='appointmentId'>
           <button type='submit' class='btn btn-primary' onclick='editAppointment();'>Save changes</button>
@@ -78,6 +79,7 @@
     </div>
   </div>
 </div>
+          </main>
 <?php include 'footer.php';?>  
 
 <script>
@@ -113,14 +115,14 @@
             const alert = document.createElement('div');
             alert.className = 'alert alert-success';
             alert.textContent = 'The appointment was updated! Please reload the page to see your appointments!';
-            document.getElementById('alertsContainer').appendChild(alert);
+            document.getElementById('alerts-container').appendChild(alert);
         })
         .catch(error => {
             console.error('There has been a problem with your fetch operation:', error);
             const alert = document.createElement('div');
             alert.className = 'alert alert-danger';
             alert.textContent = 'There was a problem updating the appointment: ' + error;
-            document.getElementById('alertsContainer').appendChild(alert);
+            document.getElementById('alerts-container').appendChild(alert);
         });
     };
     
@@ -144,14 +146,14 @@
             const alert = document.createElement('div');
             alert.className = 'alert alert-success';
             alert.textContent = 'The appoointment was deleted! Please refresh the page!';
-            document.getElementById('alertsContainer').appendChild(alert);
+            document.getElementById('alerts-container').appendChild(alert);
         })
         .catch(error => {
             console.error('There has been a problem with your fetch operation:', error);
             const alert = document.createElement('div');
             alert.className = 'alert alert-danger';
             alert.textContent = 'There was a problem deleting the appointment: ' + error;
-            document.getElementById('alertsContainer').appendChild(alert);
+            document.getElementById('alerts-container').appendChild(alert);
         });
     };
 </script>
