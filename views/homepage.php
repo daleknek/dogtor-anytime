@@ -1,15 +1,4 @@
 <?php
-<<<<<<< HEAD
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-
-require 'Config/dbConnect.php';
-
-$user_logged_in = isset($_SESSION['id']);
-
-if ($user_logged_in) {
-=======
   if (session_status() == PHP_SESSION_NONE) {
       session_start();
   }
@@ -18,7 +7,6 @@ if ($user_logged_in) {
   $user_logged_in = isset($_SESSION['id']);
 
   if ($user_logged_in) {
->>>>>>> 9e307fc0249b12f047ecbf16baa23052837ac0c9
     $patientId = $_SESSION['id'];
 
     $sql = "SELECT name FROM patient WHERE patientId = ?";
@@ -34,60 +22,6 @@ if ($user_logged_in) {
 $conn->close();
 ?>
 
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
-
-        .dropdown-menu .dropdown-item.sign-out {
-            color: red;
-        }
-
-        .main-section {
-            background: url("images/bg_homepage.webp") center center;
-            min-height: calc(100vh - 56px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .search-bar {
-            max-width: 1000px;
-            width: 700px;
-            margin: 0 auto;
-        }
-
-        .search-bar input,
-        .search-bar button {
-            height: 70px;
-            font-size: 25px;
-        }
-
-        .footer {
-            background-color: #f8f9fa;
-            padding: 30px;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-        }
-    </style>
-</head>
-<body>
-
-=======
   <style>
     body {
       margin: 0;
@@ -130,7 +64,6 @@ $conn->close();
     }
   </style>
     
->>>>>>> 3493c470cce9e9b4135855c7de10fd6bf5a05b95
 <?php include 'header.php'; ?>
 
 <main class="main-section">
@@ -148,62 +81,6 @@ $conn->close();
     </div>
 </main>
 
-<<<<<<< HEAD
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 mb-3">
-                <p class="text-muted text-start">© 2023 DogtorAnytime</p>
-            </div>
-            <div class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0">
-                <a href="/" class="link-dark text-decoration-none">
-                    <svg class="bi me-2" width="40" height="32">
-                        <use xlink:href="#bootstrap"></use>
-                    </svg>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <ul class="nav justify-content-end">
-                    <li class="nav-item">
-                        <a href="aboutUs" class="nav-link px-2 text-muted">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="contactUs" class="nav-link px-2 text-muted">Contact Us</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<script src="js/bootstrap.bundle.min.js"></script>
-<script>
-    document.querySelector('.search-bar button').addEventListener('click', () => {
-        const searchInput = document.querySelector('.search-bar input').value.trim();
-        if (searchInput === '') {
-            alert('Please enter a search query.');
-        } else {
-            fetch('results?search=' + encodeURIComponent(searchInput))
-                .then(response => response.text())
-                .then(html => {
-                    const tempHtml = document.createElement('html');
-                    tempHtml.innerHTML = html;
-                    const newSearchResults = tempHtml.querySelector('div.card-deck.row');
-
-                    if (newSearchResults && newSearchResults.children.length > 0) {
-                        window.location.href = 'results?search=' + encodeURIComponent(searchInput);
-                    } else {
-                        alert('No results found! Please try something else.');
-                    }
-                })
-                .catch(error => console.error(error));
-        }
-    });
-</script>
-
-</body>
-</html>
-=======
 <?php include 'footer.php';?>
 
 <script>
@@ -231,4 +108,3 @@ document.querySelector('.search-bar button').addEventListener('click', () => {
     }
 });
     </script>
->>>>>>> 3493c470cce9e9b4135855c7de10fd6bf5a05b95
