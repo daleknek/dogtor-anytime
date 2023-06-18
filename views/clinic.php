@@ -1,7 +1,6 @@
 <!doctype html>
 <html>
 <head>
-
 </head>
 <style>
     .clinic-photo {
@@ -21,19 +20,21 @@
         background-color: #f2f2f2;
     }
 
-    .navbar {
-        padding-top: 10px;
-    }
-
     .row {
         margin-top: 40px;
     }
+
+    .footer {
+            background-color: #f8f9fa;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
 </style>
-    <nav class='navbar fixed-top navbar-light bg-light'>
-        <div class='container-fluid'>
-          <a class='navbar-brand' href='#'>Dogtor Anytime</a>
-        </div>
-    </nav>
+<?php include 'header.php'; ?>
     <body class='custom-bg'>
         <?php 
             $clinic =  $vet['clinic'];
@@ -42,7 +43,6 @@
             $hours = $vet['hours'];
             $aboutUs = $vet['aboutUs'];
             $specialization = $vet['specialization'];
-            print_r($_SESSION);
             echo "<div class='row'>
             <div class='col-md-8'>
                 <div class='row'>
@@ -69,15 +69,43 @@
             <div class='aboutme'>
                 <p class='h5 text-muted'>About Us</p>
                 <p>$aboutUs</p> 
-                <p class='h6 text-muted'>Specialization:
-                    $specialization
+                <p class='h6 text-muted'>Specialization:    
                 </p>
+                <p>$specialization<p>
             </div>
         </div>";
         ?>
         <div class="col-md-4" id="calendar"> 
         </div>
     </div>
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <p class="text-muted text-start">© 2023 DogtorAnytime</p>
+          </div>
+          <div
+            class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0">
+            <a href="/" class="link-dark text-decoration-none">
+              <svg class="bi me-2" width="40" height="32">
+                <use xlink:href="#bootstrap"></use>
+              </svg>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <ul class="nav justify-content-end">
+              <li class="nav-item">
+                <a href="aboutUs" class="nav-link px-2 text-muted">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a href="contactUs" class="nav-link px-2 text-muted">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
 
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
