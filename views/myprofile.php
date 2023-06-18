@@ -9,12 +9,8 @@
             background: url("images/bg_profile.webp") center center;
             min-height: calc(100vh - 72px);
             display: flex;
-<<<<<<< HEAD
             justify-content: center fixed;
 
-=======
-            justify-content: center;
->>>>>>> 3493c470cce9e9b4135855c7de10fd6bf5a05b95
             padding-top: 80px;
         }
 
@@ -184,12 +180,6 @@
       $conn->close();
   }
   ?>
-<<<<<<< HEAD
-?>
-    <?php include 'header.php'; ?>
-
-=======
->>>>>>> 3493c470cce9e9b4135855c7de10fd6bf5a05b95
     <main class="main-section">
         <?php if ($user_logged_in) : ?>
             <div class="container">
