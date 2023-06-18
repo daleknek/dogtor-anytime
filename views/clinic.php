@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-<!doctype html>
-<html>
-<head>
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<script src="js/bootstrap.bundle.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5//+L169gTuijdeOV_jsDO4z9ceW4fmcpJHxsdjKVN" crossorigin="anonymous">
-=======
->>>>>>> 3493c470cce9e9b4135855c7de10fd6bf5a05b95
 <style>
 
     .row {
@@ -33,14 +24,9 @@
      }   
     
 </style>
-<<<<<<< HEAD
-    <body class='custom-bg'>
-        <?php include 'header.php'; ?>
-=======
 <?php include 'header.php'; ?>
     <main class="main-section">
     <div class="container">
->>>>>>> 3493c470cce9e9b4135855c7de10fd6bf5a05b95
         <?php 
             $clinic =  $vet['clinic'];
             $address = $vet['address'];
