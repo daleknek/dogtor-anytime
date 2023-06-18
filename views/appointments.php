@@ -2,17 +2,6 @@
 
     <style>
 
-<<<<<<< HEAD
-        body {
-            background-image: url("images/cal2.jpg");
-            padding-top: 80px;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-        }
-
-=======
->>>>>>> 3493c470cce9e9b4135855c7de10fd6bf5a05b95
         .card-text {
             margin-bottom: 0.50rem;  
         }
@@ -21,22 +10,6 @@
             margin-bottom: 0.50rem; 
         }
 
-<<<<<<< HEAD
-        .footer {
-        background-color: #f8f9fa;
-        padding: 30px;
-        text-align: center;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-      }
-    </style>
-
-
-<body>
-<?php include 'header.php'; ?>
-=======
         .main-section {
 
         min-height: calc(100vh - 56px); /* Subtracting the header and footer height */
@@ -49,7 +22,6 @@
 
 
 <?php include 'header.php';?>
->>>>>>> 3493c470cce9e9b4135855c7de10fd6bf5a05b95
 
     <main class='main-section'>
     <div class='container py-5'>
@@ -107,42 +79,9 @@
     </div>
   </div>
 </div>
-<<<<<<< HEAD
-
-<footer class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 mb-3">
-          <p class="text-muted text-start">© 2023 DogtorAnytime</p>
-        </div>
-        <div
-          class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0">
-          <a href="/" class="link-dark text-decoration-none">
-            <svg class="bi me-2" width="40" height="32">
-              <use xlink:href="#bootstrap"></use>
-            </svg>
-          </a>
-        </div>
-        <div class="col-md-4">
-          <ul class="nav justify-content-end">
-            <li class="nav-item">
-              <a href="aboutUs" class="nav-link px-2 text-muted">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a href="contactUs" class="nav-link px-2 text-muted">Contact Us</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </footer>
-   
-<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js' integrity='sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz' crossorigin='anonymous'></script>
-=======
           </main>
 <?php include 'footer.php';?>  
 
->>>>>>> 3493c470cce9e9b4135855c7de10fd6bf5a05b95
 <script>
 
     const getAppointmentId = (id) => {
