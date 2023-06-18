@@ -13,7 +13,9 @@
 
 <?php
 // Starting a new session or resuming the existing session
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 //<!-- Check if user is logged in before accessing profile
 //   if ($controllerName === 'Profile' && !isset($_SESSION['user'])) die('Unauthorized'); -->
 
