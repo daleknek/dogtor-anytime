@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
   <style>
+<<<<<<< HEAD
 body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
 }
+=======
+>>>>>>> 3493c470cce9e9b4135855c7de10fd6bf5a05b95
 
 .dropdown-menu .dropdown-item.sign-out {
   color: red;
@@ -36,6 +31,7 @@ body {
   width: 100%;
 }
 
+<<<<<<< HEAD
 .card {
   margin: 5% 0%;
 }
@@ -44,6 +40,11 @@ body {
   margin: 0% 0% 0% 3%;
   padding: 6% 0%;
 }
+=======
+    .card {
+      margin: 5% 0%;
+    }
+>>>>>>> 3493c470cce9e9b4135855c7de10fd6bf5a05b95
 
 .input-group {
   max-width: 300px;
@@ -70,12 +71,14 @@ body {
 }
 
   </style>
-</head>
 
-<body>
   <?php include 'header.php'; ?>
   <main class="main-section">
+<<<<<<< HEAD
     <div class="search-container">
+=======
+    <div class="container">
+>>>>>>> 3493c470cce9e9b4135855c7de10fd6bf5a05b95
       <div class="input-group">
         <input id="search_text" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
         <button type="button" class="btn btn-outline-primary" onclick="search()">Search</button>
@@ -137,37 +140,7 @@ body {
     </div>
   </div>
 </main>
-        ?>
-      </div>
-    </div>
-  </main>
-  <footer class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 mb-3">
-          <p class="text-muted text-start">© 2023 DogtorAnytime</p>
-        </div>
-        <div class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0">
-          <a href="/" class="link-dark text-decoration-none">
-            <svg class="bi me-2" width="40" height="32">
-              <use xlink:href="#bootstrap"></use>
-            </svg>
-          </a>
-        </div>
-        <div class="col-md-4">
-          <ul class="nav justify-content-end">
-            <li class="nav-item">
-              <a href="aboutUs" class="nav-link px-2 text-muted">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a href="contactUs" class="nav-link px-2 text-muted">Contact Us</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <script src="js/bootstrap.bundle.min.js"></script>
+<?php include 'footer.php'; ?>
   <script>
       function search() {
     const val = document.getElementById('search_text').value.trim();
@@ -194,6 +167,3 @@ body {
 document.querySelector('button.btn-outline-primary').onclick = search; // replace 'addEventListener' with 'onclick'
 
   </script>
-</body>
-
-</html>

@@ -23,6 +23,7 @@ if ($user_logged_in) {
 $conn->close();
 ?>
 
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,6 +76,50 @@ $conn->close();
 </head>
 <body>
 
+=======
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .dropdown-menu .dropdown-item.sign-out {
+      color: red;
+    }
+
+    .main-section {
+      background: url("images/bg_homepage.webp") center center;
+      min-height: calc(100vh - 56px); /* Subtracting the header height */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .search-bar {
+      max-width: 1000px;
+      width: 700px;
+      margin: 0 auto;
+    }
+
+    .search-bar input,
+    .search-bar button {
+      height: 70px;
+      font-size: 25px;
+    }
+
+    .footer {
+      background-color: #f8f9fa;
+      padding: 30px;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+  </style>
+    
+>>>>>>> 3493c470cce9e9b4135855c7de10fd6bf5a05b95
 <?php include 'header.php'; ?>
 
 <main class="main-section">
@@ -92,6 +137,7 @@ $conn->close();
     </div>
 </main>
 
+<<<<<<< HEAD
 <footer class="footer">
     <div class="container">
         <div class="row">
@@ -146,3 +192,32 @@ $conn->close();
 
 </body>
 </html>
+=======
+<?php include 'footer.php';?>
+
+<script>
+
+document.querySelector('.search-bar button').addEventListener('click', () => {
+    const searchInput = document.querySelector('.search-bar input').value.trim();
+    if (searchInput === '') {
+        // Show warning message if input is empty
+        alert('Please enter a search query.');
+    } else {
+        fetch('results?search=' + encodeURIComponent(searchInput))
+            .then(response => response.text())
+            .then(html => {
+                const tempHtml = document.createElement('html');
+                tempHtml.innerHTML = html;
+                const newSearchResults = tempHtml.querySelector('div.card-deck.row');
+
+                if (newSearchResults && newSearchResults.children.length > 0) {
+                    window.location.href = 'results?search=' + encodeURIComponent(searchInput);
+                } else {
+                    alert('No results found! Please try something else.');
+                }
+            })
+            .catch(error => console.error(error));
+    }
+});
+    </script>
+>>>>>>> 3493c470cce9e9b4135855c7de10fd6bf5a05b95

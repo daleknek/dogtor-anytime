@@ -1,26 +1,13 @@
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
+
     <style>
-        html,
-        body {
-          height: 100%;
-        }
 
         .dropdown-menu .dropdown-item.sign-out {
             color: red;
         }
 
 
-        body {
-          display: flex;
-          align-items: center;
-          padding-top: 40px;
-          padding-bottom: 40px;
-          background-color: #f5f5f5;
-            flex-grow: 1;
+        .main-section {
+            min-height: calc(100vh - 56px);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -40,16 +27,6 @@
         .form .checkbox {
           font-weight: 400;
         }
-
-        .footer {
-      background-color: #f8f9fa;
-      padding: 30px;
-      text-align: center;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-    }
 
         .form .form-floating:focus-within {
           z-index: 2;
@@ -76,10 +53,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $password = $_POST["password"]; 
    $userType = $_POST["userType"];
-    print_r($userType);
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $userType = $_POST["userType"];
-      echo "User type: " . $userType;
   }
   
     if ($userType == 'vet') {
@@ -97,11 +72,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();
 }
 
-?>  
+?> 
+
 <?php include 'header.php'; ?>
 
-    <main class="form text-center">
-        <form action="" method="post"> 
+    <main class="main-section">
+    <div class="container form text-center">
+        <form submit='event.preventDefault();' id="signUpForm" action="" method="post"> 
             <h1 class="h3 mb-3 fw-normal">Sign Up</h1>
             <div class="form-floating">
                 <input type="text" class="form-control" id="floatingInput" placeholder="Name" name="name" required>
@@ -129,35 +106,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
         </form>
+</div>
     </main>
-
-
-    <footer class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 mb-3">
-          <p class="text-muted text-start">© 2023 DogtorAnytime</p>
-        </div>
-        <div class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0">
-          <a href="/" class="link-dark text-decoration-none">
-            <svg class="bi me-2" width="40" height="32">
-              <use xlink:href="#bootstrap"></use>
-            </svg>
-          </a>
-        </div>
-        <div class="col-md-4">
-          <ul class="nav justify-content-end">
-            <li class="nav-item">
-              <a href="aboutUs" class="nav-link px-2 text-muted">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a href="contactUs" class="nav-link px-2 text-muted">Contact Us</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script src="js/bootstrap.bundle.min.js"></script>
-
+<?php include 'footer.php';?>

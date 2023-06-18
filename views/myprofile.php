@@ -1,20 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
 
         .dropdown-menu .dropdown-item.sign-out {
             color: red;
@@ -24,8 +9,12 @@
             background: url("images/bg_profile.webp") center center;
             min-height: calc(100vh - 72px);
             display: flex;
+<<<<<<< HEAD
             justify-content: center fixed;
 
+=======
+            justify-content: center;
+>>>>>>> 3493c470cce9e9b4135855c7de10fd6bf5a05b95
             padding-top: 80px;
         }
 
@@ -36,14 +25,8 @@
             object-position: center;
         }
 
-        .footer {
-            background-color: #f8f9fa;
-            padding: 30px;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
+        .alert-info {
+            max-height: 60px;
         }
     </style>
     <script>
@@ -108,9 +91,8 @@
 
 
     </script>
-</head>
-
-<body class="bs-body-color-255,255,255">
+<?php include 'header.php'; ?>
+<div class="bs-body-color-255,255,255">
 
     <?php
     if (session_status() == PHP_SESSION_NONE) {
@@ -202,9 +184,12 @@
       $conn->close();
   }
   ?>
+<<<<<<< HEAD
 ?>
     <?php include 'header.php'; ?>
 
+=======
+>>>>>>> 3493c470cce9e9b4135855c7de10fd6bf5a05b95
     <main class="main-section">
         <?php if ($user_logged_in) : ?>
             <div class="container">
@@ -278,39 +263,8 @@
             </div>
             <hr>
         <?php else : ?>
-            <p>Please log in to view your profile.</p>
+            <div class='alert alert-info' role='alert'>Please log in to view your profile.</div>
         <?php endif; ?>
     </main>
-
-    <footer class="footer">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-4 mb-3">
-              <p class="text-muted text-start">© 2023 DogtorAnytime</p>
-            </div>
-            <div
-              class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0">
-              <a href="/" class="link-dark text-decoration-none">
-                <svg class="bi me-2" width="40" height="32">
-                  <use xlink:href="#bootstrap"></use>
-                </svg>
-              </a>
-            </div>
-            <div class="col-md-4">
-              <ul class="nav justify-content-end">
-                <li class="nav-item">
-                  <a href="aboutUs" class="nav-link px-2 text-muted">About Us</a>
-                </li>
-                <li class="nav-item">
-                  <a href="contactUs" class="nav-link px-2 text-muted">Contact Us</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-    </footer>
-
-    <script src="js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+</div>
+<?php include 'footer.php'; ?>
