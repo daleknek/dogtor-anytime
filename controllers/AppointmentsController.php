@@ -8,7 +8,6 @@ class AppointmentsController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($data['task'] === 'update') {
                 $appointmentId = $data['appointmentId'];
-                // $vetId = $data['vetId'];
                 $date = $data['date'];
                 $time = $data['time'];
                 $this->updateAppointment($appointmentId, $date, $time);

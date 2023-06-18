@@ -38,10 +38,7 @@ class Router {
             'controller' => 'HomePageController',
             'action' => 'index'
         ],
-        // 'landingPageLoggedIn' => [
-        //     'controller' => 'LandingPageLoggedInController',
-        //     'action' => 'index'
-        // ],
+        
         'aboutUs' => [
             'controller' => 'AboutUsController',
             'action' => 'index'
