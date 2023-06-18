@@ -45,10 +45,6 @@
       text-align: center;
     }
 
-    To move the alert further away from the header, you can add some margin to the top of the alert element. Here's an updated version of the contactus.php file with the alert positioned below the header:
-
-php
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

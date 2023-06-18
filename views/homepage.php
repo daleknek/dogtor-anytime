@@ -121,16 +121,29 @@
 
   <script src="js/bootstrap.bundle.min.js"></script>
     <script>
-      document.querySelector('.search-bar button').addEventListener('click', () => {
-          const searchInput = document.querySelector('.search-bar input').value.trim();
-          if (searchInput === '') {
-            // Show danger message if input is empty
-            alert('Please enter a search query.');
-          } else {
-            // Redirect to results page
-            window.location.href = 'results?search=' + encodeURIComponent(searchInput);
-          }
-      });
+
+document.querySelector('.search-bar button').addEventListener('click', () => {
+    const searchInput = document.querySelector('.search-bar input').value.trim();
+    if (searchInput === '') {
+        // Show warning message if input is empty
+        alert('Please enter a search query.');
+    } else {
+        fetch('results?search=' + encodeURIComponent(searchInput))
+            .then(response => response.text())
+            .then(html => {
+                const tempHtml = document.createElement('html');
+                tempHtml.innerHTML = html;
+                const newSearchResults = tempHtml.querySelector('div.card-deck.row');
+
+                if (newSearchResults && newSearchResults.children.length > 0) {
+                    window.location.href = 'results?search=' + encodeURIComponent(searchInput);
+                } else {
+                    alert('No results found! Please try something else.');
+                }
+            })
+            .catch(error => console.error(error));
+    }
+});
     </script>
 
 </body>
