@@ -8,67 +8,80 @@
   <title>Document</title>
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-    }
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
 
-    .dropdown-menu .dropdown-item.sign-out {
-      color: red;
-    }
+.dropdown-menu .dropdown-item.sign-out {
+  color: red;
+}
+.main-section {
+  padding-top: 120px; /* Height of the header + height of the search container + additional padding */
+  background-color: #E5E4E2;
+  min-height: calc(100vh - 56px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
 
-    .main-section {
-      background-color: #E5E4E2;
-      min-height: calc(100vh - 56px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+.footer {
+  background-color: #f8f9fa;
+  padding: 30px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
 
-    .footer {
-      background-color: #f8f9fa;
-      padding: 30px;
-      text-align: center;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-    }
+.card {
+  margin: 5% 0%;
+}
 
-    .card {
-      margin: 5% 0%;
-    }
+.card-body {
+  margin: 0% 0% 0% 3%;
+  padding: 6% 0%;
+}
 
-    .card-body {
-      margin: 0% 0% 0% 3%;
-      padding: 6% 0%;
-    }
+.input-group {
+  max-width: 300px;
+  margin: 0 auto;
+}
 
-    .input-group {
-      max-width: 300px;
-      margin: 0 auto;
-    }
+.custom-card-img {
+  max-height: 200px;
+  object-fit: cover;
+}
+.search-container {
+  position: absolute;
+  top: 80px; /* Height of the header */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  padding: 10px;
+  border-radius: 5px;
+}
 
-    .custom-card-img {
-      max-height: 200px;
-      object-fit: cover;
-    }
+.card-deck {
+  margin-top: 55px;
+  padding: 0;
+}
 
-    .pagination {
-      justify-content: center;
-    }
   </style>
 </head>
 
 <body>
   <?php include 'header.php'; ?>
-  <main class="my-5 main-section">
-    <div class="container">
+  <main class="main-section">
+    <div class="search-container">
       <div class="input-group">
         <input id="search_text" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
         <button type="button" class="btn btn-outline-primary" onclick="search()">Search</button>
       </div>
+    </div>
+    <div class="container">
       <div class="card-deck row">
         <?php
         require 'Config/dbConnect.php';
@@ -107,7 +120,8 @@
                     </div>
                     <div class="card-body">
                       <h4 class="card-title">$name $surname</h4>
-                      <p class="card-text">About: $aboutUs</p>
+                      <hr>
+                      <p class="card-text"><strong>Specialization:</strong> $specialization</p>
                       <a href="/dogtor-anytime/clinic/$vetId" class="btn btn-primary">Read more</a>
                     </div>
                   </div>

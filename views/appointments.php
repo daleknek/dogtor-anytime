@@ -3,8 +3,11 @@
     <style>
 
         body {
-            background-color: #f2f2f2;
+            background-image: url("images/cal2.jpg");
             padding-top: 80px;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
         }
 
         .card-text {
@@ -15,18 +18,20 @@
             margin-bottom: 0.50rem; 
         }
 
-        .navbar {
-          padding-top: 10px;
-        }
+        .footer {
+        background-color: #f8f9fa;
+        padding: 30px;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+      }
     </style>
 
 
-<nav class='navbar fixed-top navbar-light bg-light'>
-        <div class='container-fluid'>
-          <a class='navbar-brand' href='#'>Dogtor Anytime</a>
-        </div>
-    </nav>
-    <div class='container py-5' id='alertsContainer'>
+<body>
+<?php include 'header.php'; ?>
 
     </div>
     <div class='container py-5'>
@@ -83,6 +88,34 @@
     </div>
   </div>
 </div>
+
+<footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <p class="text-muted text-start">© 2023 DogtorAnytime</p>
+        </div>
+        <div
+          class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0">
+          <a href="/" class="link-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32">
+              <use xlink:href="#bootstrap"></use>
+            </svg>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <ul class="nav justify-content-end">
+            <li class="nav-item">
+              <a href="aboutUs" class="nav-link px-2 text-muted">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a href="contactUs" class="nav-link px-2 text-muted">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
    
 <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js' integrity='sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz' crossorigin='anonymous'></script>
 <script>
@@ -160,4 +193,5 @@
         });
     };
 </script>
+  </body>
 

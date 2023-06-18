@@ -1,7 +1,9 @@
 <!doctype html>
 <html>
 <head>
-</head>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5//+L169gTuijdeOV_jsDO4z9ceW4fmcpJHxsdjKVN" crossorigin="anonymous">
 <style>
     .clinic-photo {
 
@@ -34,8 +36,8 @@
             width: 100%;
         }
 </style>
-<?php include 'header.php'; ?>
     <body class='custom-bg'>
+        <?php include 'header.php'; ?>
         <?php 
             $clinic =  $vet['clinic'];
             $address = $vet['address'];
