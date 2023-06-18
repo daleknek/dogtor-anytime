@@ -32,58 +32,32 @@
     <div class='container py-5'>
         <h1 class='text-center'>My Appointments</h1>
         <?php
-          foreach ($result as $appointment) {
-            $vetName = $appointment['vet'][0]['name'];
-            $vetSurname = $appointment['vet'][0]['surname'];
-            $date = $appointment['date'];
-            $time = $appointment['time'];
-          echo "<div class='card mb-3' data-appointment-id='1'>
-                <div class='card-body'>
-                  <h5 class='card-title'>Vet: $vetName</h5>
-                  <p class='card-text'>Date: $date</p>
-                  <p class='card-text'>Time: $time</p>                  
-                  <button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#editAppointmentModal' 
-                  onclick='document.getElementById('appointmentId').value = this.parentElement.parentElement.dataset.appointmentId'>Edit</button>
-                  <button class='btn btn-danger' onclick='deleteAppointment(this.parentElement.parentElement.dataset.appointmentId)'>Delete</button>
-                </div>
-              </div>";          
-          }
+              
+          if(count($result) > 0){
+            for($i = 0; $i < count($result); $i++) {
+              $appointmentId = $result[$i]['appointmentId'];
+              $vetId = $result[$i]['vet'][0]['vetId'];
+              $vetName = $result[$i]['vet'][0]['name'];
+              $vetSurname = $result[$i]['vet'][0]['surname'];
+              $date = $result[$i]['date'];
+              $time = $result[$i]['time'];
+              echo "<div class='card mb-3' data-appointment-id='$appointmentId' data-vet-id='$vetId'>
+                    <div class='card-body'>
+                      <h5 class='card-title'>Vet: $vetName $vetSurname</h5>
+                      <p class='card-text'>Date: $date</p>
+                      <p class='card-text'>Time: $time</p>                  
+                      <button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#editAppointmentModal' onclick='getAppointmentId($appointmentId)'>Edit</button>
+                      <button class='btn btn-danger' onclick='deleteAppointment($appointmentId)'>Delete</button>
+                    </div>
+                  </div>";          
+            }
+           }else{
+              echo"<div class='alert alert-info' role='alert'>
+                No appointments were found!
+              </div>";
+            }
           ?>
-        <button class='btn btn-success' data-bs-toggle='modal' data-bs-target='#addAppointmentModal'>Add Appointment</button>
     </div>
-
-<div class='modal fade' id='addAppointmentModal' tabindex='-1' aria-labelledby='addAppointmentModalLabel' aria-hidden='true'>
-  <div class='modal-dialog'>
-    <div class='modal-content'>
-      <div class='modal-header'>
-        <h5 class='modal-title' id='addAppointmentModalLabel'>Add Appointment</h5>
-        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
-      </div>
-      <div class='modal-body'>
-        <form id='addAppointmentForm' onsubmit='event.preventDefault(); addAppointment();'>
-          <div class='mb-3'>
-            <label for='vetSelect' class='form-label'>Select Vet</label>
-            <select class='form-select' id='vetSelect'>
-              <option selected>Choose...</option>
-              <option value='1'>Dr. Smith</option>
-              <option value='2'>Dr. Gillan</option>
-
-            </select>
-          </div>
-          <div class='mb-3'>
-            <label for='addDate' class='form-label'>Date</label>
-            <input type='date' class='form-control' id='addDate'>
-          </div>
-          <div class='mb-3'>
-            <label for='addTime' class='form-label'>Time</label>
-            <input type='time' class='form-control' id='addTime'>
-          </div>
-          <button type='submit' class='btn btn-primary'>Add Appointment</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
    
 <div class='modal fade' id='editAppointmentModal' tabindex='-1' aria-labelledby='editAppointmentModalLabel' aria-hidden='true'>
   <div class='modal-dialog'>
@@ -93,17 +67,17 @@
         <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
       </div>
       <div class='modal-body'>
-        <form id='editAppointmentForm'>
+        <form id='editAppointmentForm'  action="/AppointmentsController.php" onsubmit='event.preventDefault();'>
           <div class='mb-3'>
-            <label for='newDate' class='form-label'>New Date</label>
-            <input type='date' class='form-control' id='newDate'>
+            <label for='date' class='form-label'>New Date</label>
+            <input type='date' name="date" class='form-control' id='date'>
           </div>
           <div class='mb-3'>
-            <label for='newTime' class='form-label'>New Time</label>
-            <input type='time' class='form-control' id='newTime'>
+            <label for='date' class='form-label'>New Time</label>
+            <input type='time' min="09:00" max="18:00" name="time" class='form-control' id='time'>
           </div>
           <input type='hidden' id='appointmentId'>
-          <button type='submit' class='btn btn-primary'>Save changes</button>
+          <button type='submit' class='btn btn-primary' onclick='editAppointment();'>Save changes</button>
         </form>
       </div>
     </div>
@@ -112,107 +86,78 @@
    
 <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js' integrity='sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz' crossorigin='anonymous'></script>
 <script>
-    function addAppointment() {
 
-        var vetId = document.getElementById('vetSelect').value;
-        var date = document.getElementById('addDate').value;
-        var time = document.getElementById('addTime').value;
+    const getAppointmentId = (id) => {
+      console.log('appointmentId', id);
+      document.getElementById('appointmentId').value = id;
+    };
 
-        var formData = new FormData();
-          formData.append('vetId', vetId);
-          formData.append('date', date);
-          formData.append('time', time);
-          formData.append('task', 'create');
+    const editAppointment = () => {
+        const appointmentId = document.getElementById('appointmentId').value;
+        const form = document.getElementById('editAppointmentForm');
+        const formData = new FormData(form);
+        const date = formData.get('date');
+        const time = formData.get('time');
 
-        fetch('AppointmentQueries.php', {
+        formData.set('appointmentId', appointmentId)
+        formData.set('task', 'update');
+
+
+        fetch('', {
             method: 'POST',
-            body: formData
+            body: formData,
+            task: 'update'
         })
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            return response.text();
-        })
-        .then(data => {
-            var alert = document.createElement('div');
+            const editAppointmentModal = document.getElementById('editAppointmentModal');
+            const modal = bootstrap.Modal.getInstance(editAppointmentModal);
+            modal.hide();
+            const alert = document.createElement('div');
             alert.className = 'alert alert-success';
-            alert.textContent = 'Appointment added successfully: ' + data;
+            alert.textContent = 'The appointment was updated! Please reload the page to see your appointments!';
             document.getElementById('alertsContainer').appendChild(alert);
         })
         .catch(error => {
             console.error('There has been a problem with your fetch operation:', error);
-            var alert = document.createElement('div');
-            alert.className = 'alert alert-danger';
-            alert.textContent = 'There was a problem adding the appointment: ' + error;
-            document.getElementById('alertsContainer').appendChild(alert);
-        });
-    }
-
-    function editAppointment(appointmentId, newDate, newTime) {
-    
-        var formData = new FormData();
-        formData.append('id', appointmentId);
-        formData.append('date', newDate);
-        formData.append('time', newTime);
-        formData.append('task', 'edit');
-
-        fetch('AppointmentQueries.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.text();
-        })
-        .then(data => {
-            var alert = document.createElement('div');
-            alert.className = 'alert alert-success';
-            alert.textContent = 'Appointment updated successfully: ' + data;
-            document.getElementById('alertsContainer').appendChild(alert);
-        })
-        .catch(error => {
-            console.error('There has been a problem with your fetch operation:', error);
-            var alert = document.createElement('div');
+            const alert = document.createElement('div');
             alert.className = 'alert alert-danger';
             alert.textContent = 'There was a problem updating the appointment: ' + error;
             document.getElementById('alertsContainer').appendChild(alert);
-    });}
+        });
+    };
     
-    function deleteAppointment(appointmentId) {
-        var formData = new FormData();
-        formData.append('id', appointmentId);
-        formData.append('task', 'delete');
+    const deleteAppointment = (id) => {
+        event.preventDefault();
 
-        fetch('AppointmentQueries.php', {
+        const formData = new FormData();
+
+        formData.set('appointmentId', id)
+        formData.set('task', 'delete');
+
+        fetch('', {
             method: 'POST',
-            body: formData
+            body: formData,
+
         })
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            return response.text();
-        })
-        .then(data => {
-            var alert = document.createElement('div');
+            const alert = document.createElement('div');
             alert.className = 'alert alert-success';
-            alert.textContent = 'Appointment deleted successfully: ' + data;
+            alert.textContent = 'The appoointment was deleted! Please refresh the page!';
             document.getElementById('alertsContainer').appendChild(alert);
-
-            // Removes the deleted appointment card from the DOM
-            var appointmentCard = document.querySelector('[data-appointment-id='' + appointmentId + '']');
-            appointmentCard.parentNode.removeChild(appointmentCard);
         })
         .catch(error => {
             console.error('There has been a problem with your fetch operation:', error);
-            var alert = document.createElement('div');
+            const alert = document.createElement('div');
             alert.className = 'alert alert-danger';
             alert.textContent = 'There was a problem deleting the appointment: ' + error;
             document.getElementById('alertsContainer').appendChild(alert);
-    });
-    }
+        });
+    };
 </script>
 
