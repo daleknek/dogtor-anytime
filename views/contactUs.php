@@ -21,7 +21,7 @@
       background-color: #fffefe;
       min-height: calc(100vh - 56px); /* Subtracting the header height */
       display: flex;
-      justify-content: center;
+      justify-content: center fixed;
       align-items: center;
     }
 
