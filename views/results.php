@@ -108,7 +108,7 @@
                       <h4 class="card-title">$name $surname</h4>
                       <hr>
                       <p class="card-text"><strong>Specialization</strong> $specialization</p>
-                      <button type="button" class="btn btn-primary">Read more</button>
+                      <a href="/dogtor-anytime/clinic/$vetId" class="btn btn-primary">Read more</a>
                     </div>
                   </div>
                 </div>

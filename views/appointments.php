@@ -10,8 +10,11 @@
             margin-bottom: 0.50rem; 
         }
 
+        .dropdown-menu .dropdown-item.sign-out {
+      color: red;
+    }
         .main-section {
-
+      
         min-height: calc(100vh - 56px); /* Subtracting the header and footer height */
         display: flex;
         align-items: center;
