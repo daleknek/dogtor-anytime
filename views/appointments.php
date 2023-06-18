@@ -32,22 +32,30 @@
     <div class='container py-5'>
         <h1 class='text-center'>My Appointments</h1>
         <?php
-          foreach ($result as $appointment) {
-            $vetName = $appointment['vet'][0]['name'];
-            $vetSurname = $appointment['vet'][0]['surname'];
-            $date = $appointment['date'];
-            $time = $appointment['time'];
-          echo "<div class='card mb-3' data-appointment-id='1'>
-                <div class='card-body'>
-                  <h5 class='card-title'>Vet: $vetName</h5>
-                  <p class='card-text'>Date: $date</p>
-                  <p class='card-text'>Time: $time</p>                  
-                  <button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#editAppointmentModal' 
-                  onclick='document.getElementById('appointmentId').value = this.parentElement.parentElement.dataset.appointmentId'>Edit</button>
-                  <button class='btn btn-danger' onclick='deleteAppointment(this.parentElement.parentElement.dataset.appointmentId)'>Delete</button>
-                </div>
-              </div>";          
-          }
+              
+          if(count($result) > 0){
+            for($i = 0; $i < count($result); $i++) {
+              $appointmentId = $result[$i]['appointmentId'];
+              $vetId = $result[$i]['vet'][0]['vetId'];
+              $vetName = $result[$i]['vet'][0]['name'];
+              $vetSurname = $result[$i]['vet'][0]['surname'];
+              $date = $result[$i]['appointmentDate'];
+              $time = $result[$i]['appointmentTime'];
+              echo "<div class='card mb-3' data-appointment-id='$appointmentId' data-vet-id='$vetId'>
+                    <div class='card-body'>
+                      <h5 class='card-title'>Vet: $vetName $vetSurname</h5>
+                      <p class='card-text'>Date: $date</p>
+                      <p class='card-text'>Time: $time</p>                  
+                      <button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#editAppointmentModal' onclick='getAppointmentId($appointmentId)'>Edit</button>
+                      <button class='btn btn-danger' onclick='deleteAppointment($appointmentId)'>Delete</button>
+                    </div>
+                  </div>";          
+            }
+           }else{
+              echo"<div class='alert alert-info' role='alert'>
+                No appointments were found!
+              </div>";
+            }
           ?>
         <button class='btn btn-success' data-bs-toggle='modal' data-bs-target='#addAppointmentModal'>Add Appointment</button>
     </div>
