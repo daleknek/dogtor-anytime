@@ -31,7 +31,6 @@ body {
   width: 100%;
 }
 
-<<<<<<< HEAD
 .card {
   margin: 5% 0%;
 }
@@ -40,11 +39,6 @@ body {
   margin: 0% 0% 0% 3%;
   padding: 6% 0%;
 }
-=======
-    .card {
-      margin: 5% 0%;
-    }
->>>>>>> 3493c470cce9e9b4135855c7de10fd6bf5a05b95
 
 .input-group {
   max-width: 300px;
@@ -74,11 +68,7 @@ body {
 
   <?php include 'header.php'; ?>
   <main class="main-section">
-<<<<<<< HEAD
-    <div class="search-container">
-=======
     <div class="container">
->>>>>>> 3493c470cce9e9b4135855c7de10fd6bf5a05b95
       <div class="input-group">
         <input id="search_text" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
         <button type="button" class="btn btn-outline-primary" onclick="search()">Search</button>
