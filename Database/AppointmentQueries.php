@@ -1,10 +1,14 @@
 <?php
-// Database connection, replace with your connection string
-$db = new mysqli('localhost', 'username', 'password', 'dogtorDB');
+// ************************ Not sure if I actually need this ***********************
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "dogtorDB";
 
-// Check connection
-if ($db->connect_error) {
-    die('Connection failed: ' . $db->connect_error);
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die('Connect Error: ' . $conn->connect_error);
 }
 
 // Check if task is set
@@ -17,6 +21,7 @@ $task = $_POST['task'];
 // Handle the task
 
 switch($task) {
+
 
     case 'create':
         // Check if required data for creating is set

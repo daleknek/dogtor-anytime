@@ -122,9 +122,6 @@ class Router {
         // Handle not found
         echo "404 Not Found";
     }
-    
-
-
 }
 
 ?>
