@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -8,6 +9,16 @@ require 'Config/dbConnect.php';
 $user_logged_in = isset($_SESSION['id']);
 
 if ($user_logged_in) {
+=======
+  if (session_status() == PHP_SESSION_NONE) {
+      session_start();
+  }
+  
+  require 'Config/dbConnect.php';
+  $user_logged_in = isset($_SESSION['id']);
+
+  if ($user_logged_in) {
+>>>>>>> 9e307fc0249b12f047ecbf16baa23052837ac0c9
     $patientId = $_SESSION['id'];
 
     $sql = "SELECT name FROM patient WHERE patientId = ?";
