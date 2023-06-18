@@ -1,8 +1,4 @@
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
+
     <style>
         html,
         body {
@@ -130,34 +126,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
         </form>
     </main>
-
-
-    <footer class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 mb-3">
-          <p class="text-muted text-start">© 2023 DogtorAnytime</p>
-        </div>
-        <div class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0">
-          <a href="/" class="link-dark text-decoration-none">
-            <svg class="bi me-2" width="40" height="32">
-              <use xlink:href="#bootstrap"></use>
-            </svg>
-          </a>
-        </div>
-        <div class="col-md-4">
-          <ul class="nav justify-content-end">
-            <li class="nav-item">
-              <a href="aboutUs" class="nav-link px-2 text-muted">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a href="contactUs" class="nav-link px-2 text-muted">Contact Us</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script src="js/bootstrap.bundle.min.js"></script>
-
+<?php include 'footer.php';?>

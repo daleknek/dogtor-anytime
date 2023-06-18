@@ -1,41 +1,32 @@
-<!doctype html>
-<html>
-<head>
-</head>
 <style>
-    .clinic-photo {
-
-        width: 250px; 
-        height: 250px; 
-        border-radius: 50%; 
-        object-fit: cover; 
-    }
-
-    body {
-        padding-top: 120px;
-        margin-left: 40px;
-    }
-
-    .custom-bg {
-        background-color: #f2f2f2;
-    }
 
     .row {
         margin-top: 40px;
     }
 
-    .footer {
-            background-color: #f8f9fa;
-            padding: 10px;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-        }
+    .avatar {
+        max-width: 250px;
+        max-height: 200px;
+    }
+
+    .avatar img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .main-section {
+
+      min-height: calc(100vh - 56px); /* Subtracting the header and footer height */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+     }   
+    
 </style>
 <?php include 'header.php'; ?>
-    <body class='custom-bg'>
+    <main class="main-section">
+    <div class="container">
         <?php 
             $clinic =  $vet['clinic'];
             $address = $vet['address'];
@@ -43,11 +34,16 @@
             $hours = $vet['hours'];
             $aboutUs = $vet['aboutUs'];
             $specialization = $vet['specialization'];
+            if (is_null($vet['avatar'])) {
+                $avatar = "";
+            } else {
+                $avatar = base64_encode($vet['avatar']);
+            }
             echo "<div class='row'>
             <div class='col-md-8'>
                 <div class='row'>
-                    <div class='col-md-4'> 
-                        <img src='images/clinicphoto.jpg' class='clinic-photo' alt='clinicphoto'>
+                    <div class='avatar'> 
+                    <img src='data:image/jpeg;base64,$avatar' class='rounded-circle img-circle mb-4' alt='avatar'>
                     </div>
                     <div class='col-md-8'> 
                         <p class='h2'>
@@ -77,34 +73,9 @@
         ?>
         <div class="col-md-4" id="calendar"> 
         </div>
-    </div>
-    <footer class="footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4 mb-3">
-            <p class="text-muted text-start">© 2023 DogtorAnytime</p>
-          </div>
-          <div
-            class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0">
-            <a href="/" class="link-dark text-decoration-none">
-              <svg class="bi me-2" width="40" height="32">
-                <use xlink:href="#bootstrap"></use>
-              </svg>
-            </a>
-          </div>
-          <div class="col-md-4">
-            <ul class="nav justify-content-end">
-              <li class="nav-item">
-                <a href="aboutUs" class="nav-link px-2 text-muted">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a href="contactUs" class="nav-link px-2 text-muted">Contact Us</a>
-              </li>
-            </ul>
-          </div>
         </div>
-      </div>
-    </footer>
+        </main>
+<?php include 'footer.php'; ?>
 
 
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
@@ -133,8 +104,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         select: info => createAppointment(info),
 
-        // fetch appointments from server 
-        // events: 'fetch_appointments.php'
+
     });
 
     const createAppointment = (info) => { // called when user selects a time slot
@@ -169,5 +139,3 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </script>
 
-</body>
-</html>

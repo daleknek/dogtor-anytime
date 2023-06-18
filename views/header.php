@@ -36,7 +36,7 @@ $conn->close();
 <header>
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <a class="navbar-brand" href="homepage">DogtorAnytime</a>
+      <a class="navbar-brand" href="/dogtor-anytime/homepage">DogtorAnytime</a>
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <?php if ($user_logged_in): ?>
         <ul class="navbar-nav">
@@ -47,19 +47,19 @@ $conn->close();
               <?php echo $user_name; ?>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="myprofile">My Profile</a></li>
-              <li><a class="dropdown-item" href="appointments">My Appointments</a></li>
+              <li><a class="dropdown-item" href="/dogtor-anytime/myprofile">My Profile</a></li>
+              <li><a class="dropdown-item" href="/dogtor-anytime/appointments">My Appointments</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item sign-out" href="?logout=true">Sign out</a></li>
+              <li><a class="dropdown-item sign-out" href="/dogtor-anytime/homepage?logout=true">Sign out</a></li>
             </ul>
           </li>
         </ul>
         <?php else: ?>
         <div class="col-md-3 text-end">
-          <a href="login" class="btn btn-outline-primary me-2">Login</a>
-          <a href="signup" class="btn btn-outline-primary me-2">Sign-up</a>
+          <a href="/dogtor-anytime/login" class="btn btn-outline-primary me-2">Login</a>
+          <a href="/dogtor-anytime/signup" class="btn btn-outline-primary me-2">Sign-up</a>
         </div>
         <?php endif; ?>
       </div>
